@@ -5,13 +5,25 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "dbase": "json-server --watch database.json",
+    "dev": "concurrently \"npm run serve\" \"npm run dbase\"",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "concurrently": "^5.3.0",
     "core-js": "^3.6.5",
+    "element-ui": "^2.4.5",
+    "lodash.camelcase": "^4.3.0",
+    "lodash.chunk": "^4.2.0",
+    "lodash.upperfirst": "^4.3.1",
+    "primeicons": "^4.1.0",
+    "primevue": "^3.2.2",
+    "vee-validate": "^4.1.17",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "vuex": "^4.0.0-0",
+    "yup": "^0.32.8"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -23,7 +35,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0-0",
-    "lint-staged": "^9.5.0"
+    "lint-staged": "^9.5.0",
+    "vue-cli-plugin-element": "~1.0.1"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
