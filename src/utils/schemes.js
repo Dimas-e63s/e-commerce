@@ -1,5 +1,11 @@
 import * as yup from 'yup'
 
+export const productEditSchema = {
+  fields: [
+    ...productSchema.fields
+  ]
+}
+
 export const productSchema = {
     fields: [
       {

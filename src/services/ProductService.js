@@ -10,5 +10,8 @@ export default {
   },
   getCategories() {
     return apiClient.get('/categories')
+  },
+  getProductsByPage({page, limit}) {
+    return apiClient.get(`/products?_page=${page}&_limit=${limit}`)
   }
 }

@@ -24,17 +24,19 @@ const routes = [
     component: () => import('../views/Admin.vue'),
     meta: {
       layout: 'admin',
-      auth: true
+      auth: false
     },
     children: [
-      {path: 'products',
-       name: 'products',
-        component: () => import('../views/Admin/Products.vue'),
+      {
+        path: 'products',
+        name: 'products',
+        component: () => import('../views/Admin/Products.vue')
       },
-      {path: 'categories',
-       name: 'categories',
+      {
+        path: 'categories',
+        name: 'categories',
         component: () => import('../views/Admin/Categories.vue'),
-      }
+      },
     ]
   },
   {

@@ -49,7 +49,7 @@ export default {
     return  {
       productSchema,
       onSubmit,
-      modal
+      modal,
     }
   }
 }

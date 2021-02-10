@@ -621,3 +621,20 @@ td img {
     width: 750px;
     padding: 1rem;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination a{
+  margin: 0 .3rem;
+  background: #dddcdc;
+  border-radius: .5rem;
+  padding: .3rem .6rem;
+}
+
+.pagination .active{
+  background-color: #42b983;
+  color: #fff;
+}

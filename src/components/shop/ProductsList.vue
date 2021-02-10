@@ -69,6 +69,7 @@ export default {
             }
             return prod
           })
+          .sort((el, nextEl) => nextEl.count - el.count)
       )
 
       const addProduct = (product) => {

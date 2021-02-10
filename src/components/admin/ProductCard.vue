@@ -1,21 +1,18 @@
 <template>
-  <tr 
-    v-for="prod in products"
-    :key="prod.id"
-  >
-    <td>{{ prod.id }}</td>
-    <td>{{ prod.title }}</td>
+  <tr>
+    <td>{{ product.id }}</td>
+    <td>{{ product.title }}</td>
     <td>
-      <img :src="prod.img" :alt="prod.title">
+      <img :src="product.img" :alt="product.title">
     </td>
-    <td>{{ currency(prod.price) }}</td>
-    <td>{{ categories.find(c => prod.category === c.type).title }}</td>
-    <td>{{ prod.count }}</td>
+    <td>{{ currency(product.price) }}</td>
+    <td>{{ categories.find(c => product.category === c.type).title }}</td>
+    <td>{{ product.count }}</td>
     <td>
       <router-link 
         v-slot="{navigate}" 
         custom
-        :to="{name: 'product', params: {id: prod.id}}"
+        :to="{name: 'product', params: {id: product.id}}"
       >
         <button class="btn primary" @click="navigate">Открыть</button>
       </router-link>
@@ -27,8 +24,8 @@
 import {currency} from '@/utils/currency.js'
 export default {
   props: {
-    products: {
-      type: Array,
+    product: {
+      type: Object,
       required: true
     },
     categories: {

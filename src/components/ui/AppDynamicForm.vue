@@ -2,6 +2,7 @@
   <h2 v-if="slots"><slot/></h2>
   <Form 
     :validation-schema="schema.validation" 
+    :initial-values="schema.values"
     @submit="onSubmit"
     v-slot="{errors}"
   >

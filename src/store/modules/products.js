@@ -33,7 +33,7 @@ export default {
     }
   },
   getters: {
-    products: (state) => state.products.sort((el, nextEl) => nextEl.count - el.count),
+    products: (state) => state.products,
     isAnyProducts: (state) => state.products.length > 0,
     productsCart: (state) => state.productsCart,
     categories: (state) => state.categories,
@@ -60,6 +60,19 @@ export default {
         commit('SET_PRODUCTS', data)
       } catch (e) {
         console.log(e.message);
+      }
+    },
+    async loadProductsPerPage({ commit }, page) {
+      try {
+        const { data, headers } = await ProductService.getProductsByPage({
+          page,
+          limit: 5
+        })
+        console.log(headers['x-total-count']);
+        commit('SET_PRODUCTS', data)
+        return Math.ceil(+headers['x-total-count'] / 5)
+      } catch (e) {
+        
       }
     },
     update({commit, getters}, {id, quantaty}) {
