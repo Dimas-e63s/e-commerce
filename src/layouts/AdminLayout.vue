@@ -1,7 +1,7 @@
 <template>
     <TheAdminNavBar/>
-    <div class="container with-nav">
-      <div class="card">
+    <div class="container bg-white with-nav">
+      <div class="card bg-white">
         <router-view></router-view>
       </div>
     </div>

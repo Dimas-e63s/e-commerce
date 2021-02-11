@@ -1,6 +1,5 @@
 <template>
-  <div class="card">
-    <h1>Корзина</h1>
+  <div class="container border">
     <h3 
       v-if="products.length === 0"
       class="text-center"

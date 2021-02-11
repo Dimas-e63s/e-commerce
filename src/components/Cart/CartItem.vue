@@ -1,12 +1,14 @@
 <template>
   <tr>
-    <td>{{ product.title }}</td>
-    <td>
+    <td class="border">{{ product.title }}</td>
+    <td class="border">
       <button class="btn primary" @click="increment(product)">+</button>
         {{ product.quantaty }} шт.
       <button class="btn danger" @click="decrement(product)">-</button>
     </td>
-    <td>{{ product.price }} руб.</td>
+    <td class="border">{{ product.price }} руб.</td>
+    <td class="border">{{ product.price }} руб.</td>
+    <td class="border">{{ product.price }} руб.</td>
   </tr>
 </template>
 

@@ -1,11 +1,13 @@
 <template>
   <div class="card">
-    <table class="table">
+    <table class="w-full font-roboto border-collapse border table-fixed">
       <thead>
-        <tr>
-          <th>Наименование</th>
-          <th>Количество</th>
-          <th>Цена (шт)</th>
+        <tr class="p-y-8">
+          <th class="border p-y-8 w-4/12">Products</th>
+          <th class="border p-y-8 w-2/12">Color &#38; Size</th>
+          <th class="border p-y-8 w-2/12">Quantaty</th>
+          <th class="border p-y-8 w-2/12">Price</th>
+          <th class="border p-y-8 w-2/12">Total</th>
         </tr>
       </thead>
       <tbody>

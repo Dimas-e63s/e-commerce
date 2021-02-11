@@ -1,0 +1,30 @@
+<template>
+   <a
+     class="text-white cursor-pointer"
+     :href="link.url" 
+     target="_blank">
+     <font-awesome-icon :class="prefix ? 'mr-4' : ''" :icon="[prefix, link.icon]" size="lg"/>
+     <span 
+       v-if="link.text"
+       class="inline-block ml-4"
+     >{{ link.text }}</span>
+  </a>
+</template>
+
+<script>
+export default {
+  props: {
+    link: {
+      type: Object,
+      required: true
+    },
+    prefix: {
+      type: String
+    }
+  }        
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
