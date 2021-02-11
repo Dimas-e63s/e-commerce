@@ -30,7 +30,6 @@ import { useRoute, useRouter } from 'vue-router';
       watch(filters, val => {
         const query = {}
         if(val.search) {
-          console.log(1);
           query['search'] = val.search
         }
         if(val.category) {

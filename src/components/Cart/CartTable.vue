@@ -9,7 +9,7 @@
         </tr>
       </thead>
       <tbody>
-        <TableItem 
+        <CartItem 
             v-for="product in products"
             :key="product.id"
             :product="product"
@@ -26,10 +26,10 @@
 
 <script>
 import { computed } from "vue";
-import TableItem from "@/components/Cart/TableItem.vue";
+import CartItem from "@/components/cart/CartItem.vue";
 export default {
   components: {
-    TableItem,
+    CartItem,
   },
   props: {
     products: {

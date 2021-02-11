@@ -49,10 +49,8 @@ export default {
     }
   }, 
   emits: ['submited'],
-  setup(_, {slots}) {
-    function onSubmit(val) {
-      this.$emit('submited', val)
-    }
+  setup(_, {slots,emit}) {
+    const onSubmit = (val) => emit('submited', val)
     return {
       slots,
       onSubmit

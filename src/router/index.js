@@ -37,6 +37,12 @@ const routes = [
         name: 'categories',
         component: () => import('../views/Admin/Categories.vue'),
       },
+      {
+        path: 'products/:id',
+        name: 'productEdit',
+        props: true,
+        component: () => import('../views/Admin/ProductEdit.vue'),
+      },
     ]
   },
   {

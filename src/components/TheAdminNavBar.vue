@@ -1,7 +1,7 @@
 <template>
    <nav class="navbar">
          <h3>
-             <router-link :to="{name: 'admin'}">Admin Page</router-link>
+             <router-link :to="{name: 'products'}">Admin Page</router-link>
          </h3>
        <ul class="navbar-menu">
          <li>

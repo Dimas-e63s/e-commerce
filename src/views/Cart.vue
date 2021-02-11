@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import CartTable from '@/components/Cart/CartTable.vue';
+import CartTable from '@/components/cart/CartTable.vue';
 import {useStore} from 'vuex'
 import { computed, onMounted } from 'vue';
 

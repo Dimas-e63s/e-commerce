@@ -42,15 +42,14 @@ export default {
   setup(props, {emit}) {
     const store = useStore()
 
-    const search = ref(props.modelValue.search)
-    const category = ref(props.modelValue.category)
+    const search = ref(props.modelValue.search || '')
+    const category = ref(props.modelValue.category || '')
 
     onMounted(async () => {
       await store.dispatch('products/loadCategories')
     })
 
     const setCategory = val => category.value = val
-
     const categories = computed(() => store.getters['products/categories'])
 
     watch([search, category], val => {

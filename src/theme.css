@@ -634,7 +634,21 @@ td img {
   padding: .3rem .6rem;
 }
 
-.pagination .active{
+.pagination .active {
   background-color: #42b983;
   color: #fff;
+}
+
+.product-preview__image {
+  width: 225px;
+  height: 210px;
+}
+
+.product-preview__image img {
+  max-width: 100%;
+}
+
+.product-edit__actions {
+  margin-top: 25px;
+  margin-bottom: 10px;
 }

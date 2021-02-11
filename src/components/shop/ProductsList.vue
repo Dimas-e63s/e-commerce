@@ -59,7 +59,9 @@ export default {
         store.getters['products/products']
           .filter(prod => {
             if(props.filters.search) {
-              return prod.title.includes(props.filters.search.toLowerCase())
+              return prod.title
+                        .toLowerCase()
+                        .includes(props.filters.search.toLowerCase())
             }
             return prod
           })

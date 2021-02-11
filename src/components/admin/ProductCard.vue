@@ -12,7 +12,7 @@
       <router-link 
         v-slot="{navigate}" 
         custom
-        :to="{name: 'product', params: {id: product.id}}"
+        :to="{name: 'productEdit', params: {id: product.id}}"
       >
         <button class="btn primary" @click="navigate">Открыть</button>
       </router-link>

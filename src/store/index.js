@@ -1,5 +1,5 @@
 import { createStore, createLogger } from 'vuex'
-import productsModule from './modules/products'
+import productsModule from './modules/products/index'
 import authModule from './modules/auth'
 
 const plugins = []

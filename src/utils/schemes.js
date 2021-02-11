@@ -1,11 +1,5 @@
 import * as yup from 'yup'
 
-export const productEditSchema = {
-  fields: [
-    ...productSchema.fields
-  ]
-}
-
 export const productSchema = {
     fields: [
       {
@@ -80,4 +74,21 @@ export const productSchema = {
       count: yup.number().required().min(2),
       category: yup.string().required()
     }),
+}
+
+export const categorySchema = {
+  fields: [
+    {
+      label: 'Title',
+      name: 'title',
+      type: 'text',
+      as: 'input',
+    },
+    {
+      label: 'Type',
+      name: 'type',
+      type: 'text',
+      as: 'input',
+    },
+  ]
 }
