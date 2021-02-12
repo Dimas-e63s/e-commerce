@@ -1,14 +1,6 @@
 {
   "products": [
     {
-      "id": "2",
-      "count": "16",
-      "title": "Грушa",
-      "category": "fruit",
-      "price": 159,
-      "img": "https://images.grocery.yandex.net/2805921/631c3a283a994a80820c216ec51f139d/300x300.png"
-    },
-    {
       "id": "3",
       "count": 14,
       "title": "Апельсин",

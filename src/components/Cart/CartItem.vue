@@ -1,19 +1,41 @@
 <template>
   <tr>
-    <td class="border">{{ product.title }}</td>
-    <td class="border">
-      <button class="btn primary" @click="increment(product)">+</button>
-        {{ product.quantaty }} шт.
-      <button class="btn danger" @click="decrement(product)">-</button>
+    <td class="border-l border-b flex align-center">
+      <img class="w-36" :src="product.img" :alt="product.title">
+      <h3 class="ml-4 my-auto">{{ product.title }}</h3>
     </td>
-    <td class="border">{{ product.price }} руб.</td>
-    <td class="border">{{ product.price }} руб.</td>
-    <td class="border">{{ product.price }} руб.</td>
+    <td class="border text-center">
+      <p>color: black</p>
+      <p>size: XL</p>
+      <!-- <p class="text-center">size: XL</p> -->
+    </td>
+    <td class="border text-center">
+      <input 
+        class="inline-block w-6 outline-none w-8 border" 
+        type="number"
+        v-model="product.quantaty"
+      >
+      <!-- <button class="btn primary" @click="increment(product)">+</button>
+        {{ product.quantaty }} шт.
+      <button class="btn danger" @click="decrement(product)">-</button> -->
+    </td>
+    <td class="border text-center">{{ currency(product.price) }}</td>
+    <td class="border text-center relative">
+      {{ total }}
+      <font-awesome-icon 
+        class="right-2 absolute cursor-pointer" 
+        :icon="['far', 'times-circle']" 
+        size="lg"
+        @click="deleteProduct"
+      />
+    </td>
   </tr>
 </template>
 
 <script>
 import { useStore } from 'vuex'
+import {currency} from '@/utils/currency.js'
+import { computed } from 'vue'
 export default {
   emits: ['change'],
   props: {
@@ -22,7 +44,7 @@ export default {
       required: true
     }
   },
-  setup() {
+  setup(props) {
     const store = useStore()
     const increment = el => {
       if(el.count > el.quantaty) {
@@ -43,9 +65,16 @@ export default {
       }
     }
 
+    const deleteProduct = () => store.dispatch('products/delete', props.product.id)
+
+    const total = computed(() => currency(props.product.price * props.product.quantaty))
+
     return {
       increment,
-      decrement
+      decrement,
+      currency,
+      total,
+      deleteProduct
     }
   }
 }

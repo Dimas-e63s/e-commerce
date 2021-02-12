@@ -5,7 +5,7 @@
            v-for="contact in headerTemplate.contacts"
            :key="contact.icon"
            :link="contact"
-           class="ml-16 inline-block"
+           class="ml-16 inline-block text-white"
          />
      </div>
       <div class="my-auto mr-16">
@@ -14,6 +14,7 @@
            :key="contact.icon"
            :link="contact"
            :prefix="headerTemplate.prefix"
+           class="text-white"
          />
       </div>
    </header>

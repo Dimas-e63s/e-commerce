@@ -1,12 +1,12 @@
 <template>
    <a
-     class="text-white cursor-pointer"
+     class="cursor-pointer"
      :href="link.url" 
      target="_blank">
      <font-awesome-icon :class="prefix ? 'mr-4' : ''" :icon="[prefix, link.icon]" size="lg"/>
      <span 
        v-if="link.text"
-       class="inline-block ml-4"
+       class="inline-block ml-2"
      >{{ link.text }}</span>
   </a>
 </template>

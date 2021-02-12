@@ -1,16 +1,17 @@
 <template>
-  <h2 v-if="slots"><slot/></h2>
+  <h4 v-if="slots" class="uppercase font-poppins py-8"><slot/></h4>
   <Form 
     :validation-schema="schema.validation" 
     :initial-values="schema.values"
     @submit="onSubmit"
     v-slot="{errors}"
+    class="pt-4"
   >
       <div 
         v-for="{as, name, label, children, ...attrs} in schema.fields" 
         :key="name" 
         :class="['form-control', {'invalid': errors[name]}]">
-        <label :for="name">{{ label }}</label> 
+        <label class="font-roboto text-gray-500 pb" :for="name">{{ label }}</label> 
         <Field 
           :as="as" 
           :id="name" 
@@ -18,7 +19,8 @@
           v-bind="attrs">
           <template v-if="children && children.length">
               <component 
-                v-for="{ tag, text, ...childAttrs }, idx) in children" 
+                class="font-roboto text-gray-500"
+                v-for="({ tag, text, ...childAttrs }, idx) in children" 
                 :key="idx" 
                 :is="tag"
                 v-bind="childAttrs"
@@ -30,7 +32,7 @@
           :name="name" 
           class="invalid"/>
     </div>
-    <button class="btn primary">Создать</button>
+      <slot name="footer"/>
    </Form> 
 </template>
 

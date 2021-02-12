@@ -1,12 +1,10 @@
 <template>
-  <div class="card">
     <ProductFilter
       v-model="filters"
     />
     <ProductsList
       :filters="filters"
     />
-  </div>
 </template>
 
 <script>

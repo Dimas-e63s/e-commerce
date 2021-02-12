@@ -7,10 +7,20 @@ import upperFirst from 'lodash.upperfirst'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faInstagram, faTwitter, faLinkedinIn, faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
+import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import { faEnvelope, faPhone, faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons'
 import './index.css'
 
-library.add(faInstagram, faFacebookSquare, faLinkedinIn, faPhone, faTwitter, faEnvelope, faShoppingCart, faSearch)
+library.add(faInstagram, 
+  faFacebookSquare, 
+  faLinkedinIn, 
+  faPhone, 
+  faTwitter, 
+  faEnvelope, 
+  faShoppingCart, 
+  faSearch,
+  faTimesCircle
+  )
 
 const requireComponent = require.context(
     './components',

@@ -29,3 +29,35 @@ export const headerTemplate = {
       } 
     ]
 }
+
+export const navbarTemplate = [
+    {
+      title: 'Information',
+      children: [
+        {text: 'Delivery Information'},
+        {text: 'Discount'},
+        {text: 'Sitemap'},
+        {text: 'Privacy Policy'},
+        {text: 'My Account'},
+    ]},
+    {
+      title: 'My account',
+      children: [
+        {text: 'Sign In'},
+        {text: 'View Cart'},
+        {text: 'My Wishlist'},
+        {text: ' Check out'},
+        {text: 'My Order'}
+      ]
+    },
+    {
+      title: 'Help',
+      children: [
+        {text: 'F.A.Q.'},
+        {text: 'Shipping'},
+        {text: 'My Wishlist'},
+        {text: 'Contact Us'},
+        {text: 'Privacy Policy'}
+      ]
+    }
+]

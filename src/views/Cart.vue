@@ -1,5 +1,5 @@
 <template>
-  <div class="container border">
+  <div class="container">
     <h3 
       v-if="products.length === 0"
       class="text-center"

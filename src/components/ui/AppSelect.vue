@@ -1,7 +1,11 @@
 <template>
-   <div class="form-control">
-    <label v-if="label">{{ label }}</label>
+   <div class="form-control h-11">
+    <label 
+      v-if="label"
+      class="font-roboto text-gray-500"
+    >{{ label }}</label>
     <select 
+      class="h-11"
       :value="modelValue"
       @change="$emit('update:modelValue', $event.target.value)"
     >
