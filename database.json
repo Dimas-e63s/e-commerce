@@ -3,217 +3,240 @@
     {
       "id": "3",
       "count": 14,
-      "title": "Апельсин",
-      "category": "fruit",
-      "price": 149,
-      "img": "https://stockmeier-food.ru/wp-content/uploads/2019/07/apelsin.jpg"
+      "title": "oversized sweatshirt",
+      "category": "hoodies-sweatshirts",
+      "price": 39,
+      "img": "https://images.asos-media.com/products/champion-script-logo-taping-sweatshirt-in-grey/22301654-1-ngam?$n_640w$&wid=634&fit=constrain",
+      "img2": "https://stockmeier-food.ru/wp-content/uploads/2019/07/apelsin.jpg"
     },
     {
       "id": "4",
       "count": 0,
-      "title": "Нектарин",
-      "category": "fruit",
-      "price": 200,
-      "img": "https://cdn-irec.r-99.com/sites/default/files/imagecache/300o/product-images/13250/1280575364_nectarin.jpg"
+      "title": "Topman Paris print",
+      "category": "hoodies-sweatshirts",
+      "price": 40,
+      "img": "https://images.asos-media.com/products/asos-design-oversized-sweatshirt-in-beige/10571458-1-barley?$n_640w$&wid=634&fit=constrain",
+      "img2": "https://cdn-irec.r-99.com/sites/default/files/imagecache/300o/product-images/13250/1280575364_nectarin.jpg"
     },
     {
       "id": "5",
       "count": 15,
-      "title": "Огурец",
-      "category": "vegetable",
+      "title": "hoodies-sweatshirts",
+      "category": "hoodies-sweatshirts",
       "price": 79,
-      "img": "https://images.grocery.yandex.net/2750890/33686ff02aa44c7cb4bcb551b42f851a/300x300.png"
+      "img": "https://images.asos-media.com/products/schott-crew-neck-sweatshirt-with-badge-in-navy/22113090-1-navy?$n_640w$&wid=634&fit=constrain",
+      "img2": "https://images.grocery.yandex.net/2750890/33686ff02aa44c7cb4bcb551b42f851a/300x300.png"
     },
     {
       "id": "6",
       "count": 14,
-      "title": "Помидоры",
-      "category": "vegetable",
-      "price": 129,
-      "img": "https://images.grocery.yandex.net/2756334/e97aaa365384455c84dbfa3691c330f1/300x300.png"
+      "title": "Lyle & Scott",
+      "category": "jeans",
+      "price": 12.44,
+      "img": "https://images.asos-media.com/products/asos-design-skinny-jeans-in-washed-black/21902280-1-washedblack?$n_640w$&wid=634&fit=constrain",
+      "img2": "https://images.grocery.yandex.net/2756334/e97aaa365384455c84dbfa3691c330f1/300x300.png"
     },
     {
       "id": "7",
       "count": 11,
-      "title": "Свекла",
-      "category": "vegetable",
-      "price": 19,
-      "img": "https://images.grocery.yandex.net/2756334/33a66b51989449f9918122a775885fbc/300x300.png"
+      "title": "long sleeve jersey",
+      "category": "jeans",
+      "price": 34,
+      "img": "https://images.asos-media.com/products/asos-design-low-rise-skinny-jeans-in-dark-blue-90s-wash-with-raw-hem/21765650-1-darkwashvintage?$n_640w$&wid=634&fit=constrain",
+      "img2": "https://images.grocery.yandex.net/2756334/33a66b51989449f9918122a775885fbc/300x300.png"
     },
     {
       "id": "8",
       "count": 12,
-      "title": "Баклажан",
-      "category": "vegetable",
-      "price": 189,
-      "img": "https://images.grocery.yandex.net/2756334/cbb08819de08460a9131a86c627bed92/300x300.png"
+      "title": "oversized shorts",
+      "category": "shorts",
+      "price": 44,
+      "img": "https://images.asos-media.com/products/asos-design-oversized-jersey-shorts-in-black/22273145-1-black?$n_640w$&wid=634&fit=constrain",
+      "img2": "https://images.asos-media.com/products/river-island-skinny-jeans-in-black/20947436-1-black?$n_640w$&wid=634&fit=constrain"
     },
     {
       "id": "9",
       "count": 14,
-      "title": "Говядина",
-      "category": "meat",
+      "title": "Paul Smith shirt",
+      "category": "jeans",
       "price": 519,
-      "img": "https://images.grocery.yandex.net/2791769/01fa0c414a1d406da8db8f9a103f752d/300x300.png"
+      "img": "https://images.asos-media.com/products/asos-design-cropped-skinny-jeans-in-mid-wash-blue-with-rips/21563064-1-midwashblue?$n_640w$&wid=634&fit=constrain",
+      "img2": "https://images.grocery.yandex.net/2791769/01fa0c414a1d406da8db8f9a103f752d/300x300.png"
     },
     {
       "id": "10",
       "count": 17,
-      "title": "Свинина",
-      "category": "meat",
+      "title": "Tommy Hilfiger short",
+      "category": "shorts",
       "price": 459,
-      "img": "https://турмясово.рф/wp-content/uploads/2018/08/%D0%A4%D0%B8%D0%BB%D0%B5-%D1%81%D0%B2%D0%B8%D0%BD%D0%B8%D0%BD%D0%B0-300x300.jpg"
+      "img": "https://images.asos-media.com/products/tommy-hilfiger-lounge-short-with-comfort-logo-waistband-in-grey/11427858-1-grey?$n_640w$&wid=634&fit=constrain",
+      "img2": "https://турмясово.рф/wp-content/uploads/2018/08/%D0%A4%D0%B8%D0%BB%D0%B5-%D1%81%D0%B2%D0%B8%D0%BD%D0%B8%D0%BD%D0%B0-300x300.jpg"
     },
     {
       "id": "11",
       "count": 16,
-      "title": "Утка",
-      "category": "meat",
+      "title": "check grey marl",
+      "category": "shorts",
       "price": 890,
-      "img": "https://myaso-1.ru/wp-content/uploads/2020/02/60588.jpg"
+      "img2": "https://myaso-1.ru/wp-content/uploads/2020/02/60588.jpg",
+      "img": "https://images.asos-media.com/products/asos-design-co-ord-smart-skinny-shorts-with-draw-cord-waist-in-grid-check-grey-marl/21898683-1-brown?$n_640w$&wid=634&fit=constrain"
     },
     {
       "id": "12",
       "count": 14,
-      "title": "Курица",
-      "category": "meat",
+      "title": "Nike Air Force 1",
+      "category": "sneakers",
       "price": 190,
-      "img": "https://produktoff.com/static/upload/goods/21/72421_original.jpg"
+      "img2": "https://produktoff.com/static/upload/goods/21/72421_original.jpg",
+      "img": "https://images.asos-media.com/products/nike-air-force-1-07-lv8-revival-2-trainers-in-black/21389271-1-black?$n_640w$&wid=634&fit=constrain"
     },
     {
       "id": "13",
       "count": 12,
-      "title": "Форель",
-      "category": "fish",
+      "title": "Nike Pegasus",
+      "category": "sneakers",
       "price": 299,
-      "img": "https://images.grocery.yandex.net/2750890/c22be040fc034226aee10d52972db879/300x300.png"
+      "img2": "https://images.grocery.yandex.net/2750890/c22be040fc034226aee10d52972db879/300x300.png",
+      "img": "https://images.asos-media.com/products/nike-running-pegasus-trail-2-gortex-trainers-in-grey/21293779-1-grey?$n_640w$&wid=634&fit=constrain"
     },
     {
       "id": "14",
       "count": 0,
-      "title": "Тунец",
-      "category": "fish",
+      "title": "Nike Air Max 95",
+      "category": "sneakers",
       "price": 159,
-      "img": "https://images.grocery.yandex.net/2805921/76b31b25e00748b290a44c03e279440c/300x300.png"
+      "img2": "https://images.grocery.yandex.net/2805921/76b31b25e00748b290a44c03e279440c/300x300.png",
+      "img": "https://images.asos-media.com/products/nike-air-max-95-revival-trainers-in-black/21396621-1-black?$n_640w$&wid=634&fit=constrain"
     },
     {
       "id": "15",
       "count": 13,
-      "title": "Треска",
-      "category": "fish",
+      "title": "Adidas Original",
+      "category": "sneakers",
       "price": 429,
-      "img": "https://images.grocery.yandex.net/2805921/b4f8c7add9874804acfae734534e1409/300x300.png"
+      "img": "https://images.asos-media.com/products/adidas-originals-rivalry-low-premium-trainers-in-white-with-miss-match-stripes/21907630-1-white?$n_640w$&wid=634&fit=constrain",
+      "img2": "https://images.grocery.yandex.net/2805921/b4f8c7add9874804acfae734534e1409/300x300.png"
     },
     {
       "id": "16",
       "count": 10,
-      "title": "Белуга",
-      "category": "fish",
-      "price": 1200,
-      "img": "https://olimp-fish.ru/wp-content/uploads/2020/04/%D1%84%D0%B8%D0%BB%D0%B5-%D1%82%D1%80%D0%B5%D1%81%D0%BA%D0%B8-300x300.jpg"
+      "title": "Adidas Running",
+      "category": "sneakers",
+      "price": 120,
+      "img2": "https://olimp-fish.ru/wp-content/uploads/2020/04/%D1%84%D0%B8%D0%BB%D0%B5-%D1%82%D1%80%D0%B5%D1%81%D0%BA%D0%B8-300x300.jpg",
+      "img": "https://images.asos-media.com/products/adidas-running-x9000l4-trainers-in-off-white/21283997-1-white?$n_640w$&wid=634&fit=constrain"
     },
     {
       "id": "17",
       "count": 12,
-      "title": "Розмарин",
-      "category": "greens",
+      "title": "Adidas zx k2",
+      "category": "sneakers",
       "price": 169,
-      "img": "https://images.grocery.yandex.net/2756334/09072b2d38ff4b9391f89a2b37a83053/300x300.png"
+      "img2": "https://images.grocery.yandex.net/2756334/09072b2d38ff4b9391f89a2b37a83053/300x300.png",
+      "img": "https://images.asos-media.com/products/adidas-originals-zx-2k-boost-pure-trainers-in-black/21214127-1-black?$n_640w$&wid=634&fit=constrain"
     },
     {
       "id": "18",
       "count": 13,
-      "title": "Шпинат",
-      "category": "greens",
+      "title": "Adidas Running",
+      "category": "sneakers",
       "price": 69,
-      "img": "https://images.grocery.yandex.net/2783132/1e72718cfd11452a8ed4ed04aee8c033/300x300.png"
+      "img2": "https://images.grocery.yandex.net/2783132/1e72718cfd11452a8ed4ed04aee8c033/300x300.png",
+      "img": "https://images.asos-media.com/products/adidas-running-x9000-trainers-in-grey/20509233-1-grey?$n_640w$&wid=634&fit=constrain"
     },
     {
       "id": "19",
       "count": 13,
-      "title": "Петрушка",
-      "category": "greens",
+      "title": "Ralf Laurent t-shirt",
+      "category": "t-shirt",
       "price": 39,
-      "img": "https://images.grocery.yandex.net/2756334/6f87c8ecea5b4fb98601b901cbcf0b6f/300x300.png"
+      "img2": "https://images.grocery.yandex.net/2756334/6f87c8ecea5b4fb98601b901cbcf0b6f/300x300.png",
+      "img": "https://images.asos-media.com/products/polo-ralph-lauren-player-logo-t-shirt-in-beige-marl/22654496-1-beige?$n_640w$&wid=634&fit=constrain"
     },
     {
       "id": "20",
       "count": 14,
-      "title": "Укроп",
-      "category": "greens",
+      "title": "Nike t-shirt",
+      "category": "t-shirt",
       "price": 35,
-      "img": "https://images.grocery.yandex.net/2805921/a00ffda9ddca4defa055fd4e6719f4c7/300x300.png"
+      "img2": "https://images.grocery.yandex.net/2805921/a00ffda9ddca4defa055fd4e6719f4c7/300x300.png",
+      "img": "https://images.asos-media.com/products/nike-repeat-pack-logo-taping-t-shirt-in-black/14794650-1-black?$n_640w$&wid=634&fit=constrain"
     },
     {
       "id": "21",
       "count": 11,
-      "title": "Мята",
-      "category": "greens",
+      "title": "The North Face t-shirt",
+      "category": "t-shirt",
       "price": 99,
-      "img": "https://images.grocery.yandex.net/2998515/dc4c4582962e48589147b830c30cebe8/300x300.png"
+      "img2": "https://images.grocery.yandex.net/2998515/dc4c4582962e48589147b830c30cebe8/300x300.png",
+      "img": "https://images.asos-media.com/products/the-north-face-logo-t-shirt-in-black/23411028-1-black?$n_640w$&wid=634&fit=constrain"
     },
     {
       "id": "22",
       "count": 15,
-      "title": "Кинза",
-      "category": "greens",
+      "title": "Only & Sons t-shirt",
+      "category": "t-shirt",
       "price": 55,
-      "img": "https://images.grocery.yandex.net/2888787/0fd625d240034c8282faff2b4ea677e3/300x300.png"
+      "img2": "https://images.grocery.yandex.net/2888787/0fd625d240034c8282faff2b4ea677e3/300x300.png",
+      "img": "https://images.asos-media.com/products/only-sons-oversized-t-shirt-with-tiger-back-print-in-lilac/22856757-1-raindrops?$n_640w$&wid=634&fit=constrain"
     },
     {
       "id": "23",
       "count": 10,
-      "title": "Клубника",
-      "category": "berries",
+      "title": "Pull&Bear t-shirt",
+      "category": "t-shirt",
       "price": 299,
-      "img": "https://images.grocery.yandex.net/2805921/af2033d4ef3b4645abd19cd21e408695/300x300.png"
+      "img2": "https://images.grocery.yandex.net/2805921/af2033d4ef3b4645abd19cd21e408695/300x300.png",
+      "img": "https://images.asos-media.com/products/pullbear-space-hunter-t-shirt-in-white/23456945-1-white?$n_640w$&wid=634&fit=constrain"
     },
     {
       "id": "24",
       "count": 10,
-      "title": "Голубика",
-      "category": "berries",
+      "title": "River Island t-shirt",
+      "category": "t-shirt",
       "price": 249,
-      "img": "https://images.grocery.yandex.net/2756334/569d8814c1e548b0b4945e7bc4cd912a/300x300.png"
+      "img2": "https://images.grocery.yandex.net/2756334/569d8814c1e548b0b4945e7bc4cd912a/300x300.png",
+      "img": "https://images.asos-media.com/products/river-island-long-sleeve-slim-poplin-shirt-in-white/20562676-1-white?$n_640w$&wid=634&fit=constrain"
     },
     {
       "id": "25",
       "count": 15,
-      "title": "Виноград",
-      "category": "berries",
+      "title": "Overshirt ASOS",
+      "category": "t-shirt",
       "price": 139,
-      "img": "https://images.grocery.yandex.net/2783132/4e13bf22837b45b59fd4b3e611d5fedf/300x300.png"
+      "img2": "https://images.grocery.yandex.net/2783132/4e13bf22837b45b59fd4b3e611d5fedf/300x300.png",
+      "img": "https://images.asos-media.com/products/asos-design-oversized-wool-mix-overshirt-in-light-grey/23121975-1-lightgrey?$n_640w$&wid=634&fit=constrain"
     }
   ],
   "categories": [
     {
-      "type": "fruit",
-      "title": "Фрукты",
+      "type": "sneakers",
+      "title": "Shoes",
       "id": "1"
     },
     {
-      "type": "vegetable",
-      "title": "Овощи",
+      "type": "t-shirt",
+      "title": "T-Shirt",
       "id": "2"
     },
     {
-      "type": "meat",
-      "title": "Мясо",
+      "type": "shorts",
+      "title": "Shorts",
       "id": "3"
     },
     {
-      "type": "fish",
-      "title": "Рыба",
+      "type": "hoodies-sweatshirts",
+      "title": "Hoodies&Sweatshirts",
       "id": "4"
     },
     {
-      "type": "greens",
-      "title": "Зелень",
+      "type": "jeans",
+      "title": "Jeans",
       "id": "5"
     },
     {
-      "type": "berries",
-      "title": "Ягоды",
+      "type": "accesoaries",
+      "title": "Accesoaries",
       "id": "6"
     }
   ]

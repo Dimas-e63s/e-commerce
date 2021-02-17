@@ -1,13 +1,10 @@
 <template>
   <div class="container">
     <h3 
-      v-if="products.length === 0"
+      v-if="isCartEmpty"
       class="text-center"
     >В корзине пока ничего нет</h3>
-    <CartTable 
-      v-else
-      :products="products" 
-    />
+    <CartTable v-else/>
   </div>
 </template>
 
@@ -28,14 +25,16 @@ export default {
   setup() {
     const store = useStore()
 
-    onMounted(async() => {
-      await store.dispatch('products/loadProductsFromCart', CART_MODEL)
-    })
+    // onMounted(async() => {
+    //   await store.dispatch('products/loadProductsFromCart', CART_MODEL)
+    // })
 
-    const products = computed(() => store.getters['products/productsCart'])
+    const products = computed(() => store.getters['cart/productsCart'])
+    const isCartEmpty = computed(() => Object.keys(products.value).length === 0)
 
     return {
       products,
+      isCartEmpty
     }
   }
 }

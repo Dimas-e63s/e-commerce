@@ -1,10 +1,14 @@
 <template>
+  <div class="flex flex-row">
     <ProductFilter
+      class="w-1/3"
       v-model="filters"
     />
     <ProductsList
+      class="w-2/3"
       :filters="filters"
     />
+  </div>
 </template>
 
 <script>
@@ -32,6 +36,9 @@ import { useRoute, useRouter } from 'vue-router';
         }
         if(val.category) {
           query['category'] = val.category
+        }
+        if(val.price) {
+          query['price'] = val.price
         }
         router.replace({query})
       })

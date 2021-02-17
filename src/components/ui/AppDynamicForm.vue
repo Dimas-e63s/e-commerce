@@ -1,17 +1,18 @@
 <template>
-  <h4 v-if="slots" class="uppercase font-poppins py-8"><slot/></h4>
+  <h4 v-if="slots.default" class="uppercase font-poppins py-8"><slot/></h4>
   <Form 
     :validation-schema="schema.validation" 
     :initial-values="schema.values"
     @submit="onSubmit"
     v-slot="{errors}"
     class="pt-4"
+    v-bind="$attrs"
   >
       <div 
-        v-for="{as, name, label, children, ...attrs} in schema.fields" 
+        v-for="{as, name, label, labelClass, children, ...attrs} in schema.fields" 
         :key="name" 
-        :class="['form-control', {'invalid': errors[name]}]">
-        <label class="font-roboto text-gray-500 pb" :for="name">{{ label }}</label> 
+        :class="['form-control', {'invalid': errors[name]}, attrs.class]">
+        <label v-if="label" class="font-roboto text-gray-500 pb"  :class="labelClass" :for="name">{{ label }}</label> 
         <Field 
           :as="as" 
           :id="name" 

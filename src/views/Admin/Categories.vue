@@ -16,7 +16,9 @@
      <AppDynamicForm 
         :schema="categorySchema" 
         @submited="onSubmit"
-     >Создать новую увтегорию</AppDynamicForm>
+     >Создать новую увтегорию
+     <template #footer><button>create</button></template>
+     </AppDynamicForm>
     </AppModal>
   </teleport>
 </template>

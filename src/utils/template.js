@@ -34,30 +34,30 @@ export const navbarTemplate = [
     {
       title: 'Information',
       children: [
-        {text: 'Delivery Information'},
-        {text: 'Discount'},
-        {text: 'Sitemap'},
-        {text: 'Privacy Policy'},
-        {text: 'My Account'},
+        {text: 'Delivery Information', url: '/'},
+        {text: 'Discount', url: '/'},
+        {text: 'Sitemap', url: '/'},
+        {text: 'Privacy Policy', url: '/'},
+        {text: 'My Account', url: '/'},
     ]},
     {
       title: 'My account',
       children: [
-        {text: 'Sign In'},
-        {text: 'View Cart'},
-        {text: 'My Wishlist'},
-        {text: ' Check out'},
-        {text: 'My Order'}
+        {text: 'Sign In', url: '/'},
+        {text: 'View Cart', url: '/cart'},
+        {text: 'My Wishlist', url: '/wishlist'},
+        {text: ' Check out', url: '/'},
+        {text: 'My Order', url: '/'}
       ]
     },
     {
       title: 'Help',
       children: [
-        {text: 'F.A.Q.'},
-        {text: 'Shipping'},
-        {text: 'My Wishlist'},
-        {text: 'Contact Us'},
-        {text: 'Privacy Policy'}
+        {text: 'F.A.Q.', url: '/'},
+        {text: 'Shipping', url: '/'},
+        {text: 'My Wishlist', url: '/wishlist'},
+        {text: 'Contact Us', url: '/'},
+        {text: 'Privacy Policy', url: '/'}
       ]
     }
 ]

@@ -51,11 +51,11 @@ export default {
 
     const currentPage = computed(() => +route.query.page || 1)
     onMounted(async () => {
-      await store.dispatch('products/loadCategories')
-      total.value = await store.dispatch('products/loadProductsPerPage', currentPage.value)
+      await store.dispatch('categories/loadCategories')
+      total.value = await store.dispatch('products/loadAllProducts')
     })
 
-    const categories = computed(() => store.getters['products/categories'])
+    const categories = computed(() => store.getters['categories/categories'])
     const products = computed( () => store.getters['products/products'])
 
     return  {

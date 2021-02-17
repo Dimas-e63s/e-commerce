@@ -40,7 +40,7 @@ export default {
     const store = useStore()
     const confirm = ref(false)
     const categoryId = ref(false)
-    const categories = computed(() => store.getters['products/categories'])
+    const categories = computed(() => store.getters['categories/categories'])
 
     const confirmRemove = id => {
       categoryId.value = id
@@ -48,7 +48,7 @@ export default {
     }
 
     const deleteCategory = () => {
-      store.dispatch('products/deleteCategory', categoryId.value)
+      store.dispatch('categories/deleteCategory', categoryId.value)
       confirm.value = false
     }
 

@@ -1,44 +1,24 @@
 <template>
-    <div class="products-table">
-      <div class="product-card"
+    <div class="products-table w-full">
+       <div class="product-card" 
         v-for="product in allProducts"
         :key="product.id"
       >
         <div class="product-img"  @click="$router.push(`/product/${product.id}`)">
           <img :src="product.img" :alt="product.title">
         </div>
-        <h4 class="product-title">{{ product.title }}</h4>
-        <div class="text-center">
-          <div v-if="product.count === 0">Нет в наличии</div>
-          <template v-else>
-            <button 
-              v-if="!CART_MODEL[product.id]"
-              class="btn"
-              @click="addProduct(product)"
-            >{{ currency(product.price) }}</button>
-            <div 
-              v-else
-              class="product-controls">
-              <button 
-                class="btn danger"
-                @click="deleteProduct(product)"
-              >-</button>
-              <strong>{{CART_MODEL[product.id]}}</strong>
-              <button 
-                class="btn primary"
-                @click="addProduct(product)"
-                :disabled="CART_MODEL[product.id] === product.count"
-              >+</button>
-            </div>
-
-          </template>
+        <h4 class="product-title font-poppins">{{ product.title }}</h4>
+        <div class="product-price">
+          <span>{{ currency(product.price) }}</span>
         </div>
-      </div>
+        <star-rating :star-size="13" :show-rating="false"  v-model:rating="rating"/>
+      </div> 
     </div>
 </template>
 
 <script>
-import { computed, onMounted, reactive } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
+import StarRating from 'vue-star-rating'
 import { useStore } from 'vuex'
 import {currency} from '@/utils/currency.js';
 export default {
@@ -48,9 +28,13 @@ export default {
       required: true
     }
   },
+  components: {
+    StarRating,
+  },
   setup(props) {
       const store = useStore()
       const CART_MODEL = reactive({})
+      const rating = ref(3)
       onMounted(async () => {
         await store.dispatch('products/loadAllProducts')
       })
@@ -71,6 +55,12 @@ export default {
             }
             return prod
           })
+          .filter(prod => {
+            if(props.filters.price) {
+              return prod.price > props.filters.price[0] && prod.price < props.filters.price[1]
+            }
+            return prod
+          })
           .sort((el, nextEl) => nextEl.count - el.count)
       )
 
@@ -82,12 +72,18 @@ export default {
         CART_MODEL[product.id] === 0  ? delete CART_MODEL[product.id] :CART_MODEL[product.id]--
       }
 
+      const setRating = (rating) => {
+      rating.value = rating;
+    }
+
       return {
         allProducts,
         currency,
         addProduct,
         CART_MODEL,
-        deleteProduct
+        deleteProduct,
+        setRating,
+        rating
       }     
   }
 }

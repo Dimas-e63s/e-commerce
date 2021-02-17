@@ -25,9 +25,10 @@
             <li 
               v-for="link in list.children" 
               :key="link.text">
-              <a 
+              <router-link
+                :to="link.url"
                 class="text-black font-roboto mb-2 inline-block hover:underline" 
-                href="">{{ link.text }}</a></li>
+                href="">{{ link.text }}</router-link></li>
         </ul>
         </div>
     </div>
