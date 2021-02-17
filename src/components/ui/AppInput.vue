@@ -1,5 +1,5 @@
 <template>
-   <div class="form-control">
+   <div :class="['form-control', {'invalid': error}]">
        <label for="label">{{label}}</label>
        <input 
          v-bind="$attrs" 
@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  inheritAttrs: false,
   props: {
     modelValue: {
       type: [String, Number],
@@ -24,6 +25,9 @@ export default {
     },
     label: {
       type: String,
+      required: false
+    },
+    error: {
       required: false
     }
   },

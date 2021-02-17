@@ -7,74 +7,57 @@
     <td class="border text-center">
       <p>color: black</p>
       <p>size: XL</p>
-      <!-- <p class="text-center">size: XL</p> -->
     </td>
     <td class="border text-center">
-      <input 
+      <!-- <input 
         class="inline-block w-6 outline-none w-8 border" 
         type="number"
-        v-model="product.quantaty"
-      >
-      <!-- <button class="btn primary" @click="increment(product)">+</button>
-        {{ product.quantaty }} шт.
-      <button class="btn danger" @click="decrement(product)">-</button> -->
+        v-model="product.quantity"
+      > -->
+      <button class="px-2" @click="addToCart">+</button>
+        <small class="inline-block w-12 border">{{ product.quantity }}</small>
+      <button class="px-2" @click="decreaseAmount">-</button>
     </td>
     <td class="border text-center">{{ currency(product.price) }}</td>
     <td class="border text-center relative">
-      {{ total }}
+      {{ totalPrice }}
       <font-awesome-icon 
         class="right-2 absolute cursor-pointer" 
         :icon="['far', 'times-circle']" 
         size="lg"
-        @click="deleteProduct"
+        @click="deleteFromCart"
       />
     </td>
   </tr>
 </template>
 
 <script>
-import { useStore } from 'vuex'
 import {currency} from '@/utils/currency.js'
 import { computed } from 'vue'
+import {useProductActions} from '@/use/productActions.js'
 export default {
   emits: ['change'],
   props: {
     product: {
       type: Object,
       required: true
+    },
+    id: {
+      type: String,
+      required: true
     }
   },
   setup(props) {
-    const store = useStore()
-    const increment = el => {
-      if(el.count > el.quantaty) {
-        store.dispatch('products/updateProductInCart', {
-          id: el.id,
-          quantaty: ++el.quantaty
-        })
-      }
-    }
-    const decrement = el => {
-      if(el.quantaty > 1) {
-        store.dispatch('products/updateProductInCart', {
-          id: el.id,
-          quantaty: --el.quantaty
-        })  
-      } else {
-         store.dispatch('products/delete', el.id)  
-      }
-    }
+    console.log(props);
+    const {addToCart, decreaseAmount, deleteFromCart } = useProductActions(props.id)
 
-    const deleteProduct = () => store.dispatch('products/delete', props.product.id)
-
-    const total = computed(() => currency(props.product.price * props.product.quantaty))
-
+    const totalPrice = computed(() => currency(props.product.price * props.product.quantity))
     return {
-      increment,
-      decrement,
+      addToCart,
+      decreaseAmount,
       currency,
-      total,
-      deleteProduct
+      totalPrice,
+      deleteFromCart
     }
   }
 }

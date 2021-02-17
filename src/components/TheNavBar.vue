@@ -13,10 +13,14 @@
          <li>
             <router-link :to="{name: 'products'}">Admin</router-link>
          </li>
+         <li>
+            <router-link :to="{name: 'wishlist'}">Wish List</router-link>
+         </li>
     </ul>
     <div class="my-auto mr-14">
-        <a @click.prevent="$router.push({name: 'cart'})" class="cursor-pointer text-black">
-            <font-awesome-icon class="mr-6" :icon="['fas', 'shopping-cart']" size="lg"/>
+        <a @click.prevent="$router.push({name: 'cart'})" class="cursor-pointer text-black mr-4 relative">
+            <font-awesome-icon :icon="['fas', 'shopping-cart']" size="lg"/>
+            <small v-if="totalInCart" id="lblCartCount">{{totalInCart}}</small>
         </a>
         <a @click.prevent class="text-black cursor-pointer">
             <font-awesome-icon :icon="['fas', 'search']" size="lg"/>
@@ -26,9 +30,26 @@
 </template>
 
 <script>
-import AppLink from './ui/AppLink.vue'
 export default {
-  components: { AppLink },
+  computed: {
+    totalInCart() {
+      const cart = this.$store.getters['cart/productsCart']
+      return Object.keys(cart).reduce((acc, key) => acc+= cart[key].quantity ,0)
+    }
+  }
 }
 </script>
+
+<style scoped>
+#lblCartCount {
+    position: absolute;
+    font-size: 12px;
+    background: #10B981;
+    color: #fff;
+    padding: 0 6px;
+    border-radius: 50%;
+    top: -6px;
+    right: -12px;
+}
+</style>
 

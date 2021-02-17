@@ -1,4 +1,5 @@
 import ProductService from '@/services/ProductService'
+import {format} from '@/utils/formatter.js'
 
 export default {
     async loadProductsFromCart({commit}, payload) {
@@ -17,9 +18,17 @@ export default {
     async loadAllProducts({commit}) {
       try {
         const {data} = await ProductService.getProducts()
-        commit('SET_PRODUCTS', data)
+        commit('SET_PRODUCTS', format(data))
       } catch (e) {
         console.log(e.message);
+      }
+    },
+    async loadProductById({ commit }, id) {
+      try {
+        const { data } = await ProductService.getProduct(id)
+        commit('SET_PRODUCT', {...data, id})
+      } catch (e) {
+        
       }
     },
     async loadProductsPerPage({ commit }, page) {
@@ -58,32 +67,13 @@ export default {
         console.log(e.message);
       }
     },
-    async loadCategories({commit}) {
-      try {
-        const { data } = await ProductService.getCategories()
-        commit('SET_CATEGORIES', data)
-      } catch (e) {
-        console.log(e.message);
-      }
-    },
     async addProduct({commit}, product) {
-      commit('SET_PRODUCT', product)
-    },
-    async addCategory({commit}, category) {
       try {
-        const { data } = await ProductService.createCategory(category)
-        commit('SET_CATEGORY', data)
+        const { data } = await ProductService.createProduct(product)
+        commit('SET_PRODUCT', format(data))
       } catch (e) {
         console.log(e.message);
       }
+      // commit('SET_PRODUCT', product)
     },
-    async deleteCategory({commit, getters}, id) {
-      try {
-        await ProductService.deleteCategory(id)
-        const idx = getters.getCategoryIdxById(id)
-        commit('DELETE_CATEGORY', idx)
-      } catch (e) {
-        console.log(e.message);
-      }
-    }
   }

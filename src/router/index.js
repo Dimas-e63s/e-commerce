@@ -24,7 +24,8 @@ const routes = [
     component: () => import('../views/Admin.vue'),
     meta: {
       layout: 'admin',
-      auth: false
+      auth: true,
+      admin: true
     },
     children: [
       {
@@ -60,7 +61,24 @@ const routes = [
     meta: {
       layout: 'main'
     }
-  }
+  },
+  {
+    path: '/checkout',
+    name: 'checkout',
+    component: () => import('../views/Checkout.vue'),
+    meta: {
+      layout: 'main',
+      auth: true,
+    }
+  },
+  {
+    path: '/wishlist',
+    name: 'wishlist',
+    component: () => import('../views/WishList.vue'),
+    meta: {
+      layout: 'main'
+    }
+  },
 ]
 
 const router = createRouter({

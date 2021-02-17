@@ -11,10 +11,11 @@
       </thead>
       <tbody>
         <CartItem 
-            v-for="product in products"
-            :key="product.id"
+            v-for="(product, key) in products"
+            :key="key"
             :product="product"
-      />
+            :id="key"
+      ></CartItem>
       </tbody>
     </table>
     <div class="px-3 py-4 border-l border-r border-b text-right">
@@ -39,7 +40,7 @@
           </tr>
           <tr>
             <td class="px-9 pb-5">Coupon</td>
-            <td class="text-right px-9">$0</td>
+            <td class="text-right px-9">{{ currency(0)}}</td>
           </tr>
           <tr>
             <td class="pb-8 px-9">Shipping</td>
@@ -48,7 +49,7 @@
           <tfoot class="border-t">
             <tr>
               <td class="py-6 px-9">Total</td>
-              <td class="py-6 px-9 text-right">$400</td>
+              <td class="py-6 px-9 text-right">{{ totalPrice }}</td>
             </tr>
           </tfoot>
         </table>
@@ -60,29 +61,33 @@
 </template>
 
 <script>
-import { computed, ref } from "vue";
+import { ref } from "vue";
+import {currency} from '@/utils/currency.js'
 import CartItem from "@/components/cart/CartItem.vue";
 import AppDynamicForm from '../ui/AppDynamicForm.vue';
 import {availabilitySchema} from '@/utils/schemes.js'
+import { useCartTotal } from '@/use/cartTotal.js'
 export default {
   components: {
     CartItem,
     AppDynamicForm,
   },
-  props: {
-    products: {
-      type: Array,
-      required: true,
-    },
-  },
-  setup(props) {
+  // props: {
+  //   products: {
+  //     type: Object,
+  //     required: true,
+  //   },
+  // },
+  setup() {
     const model = ref('Select Country')
-    const totalPrice = computed(() => props.products.reduce((acc, next) => acc+= next.quantaty * next.price, 0))
-
+    const { totalPrice, products } = useCartTotal()
+    
     return {
       totalPrice,
       model,
-      availabilitySchema
+      availabilitySchema,
+      currency,
+      products
     }
   }
 };

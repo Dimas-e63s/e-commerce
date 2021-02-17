@@ -9,8 +9,8 @@ export default {
   setup() {
     const store = useStore()
     onMounted(async () => {
-      if(store.getters['products/categories'].length === 0) {
-        await store.dispatch('products/loadCategories')
+      if(store.getters['categories/categories'].length === 0) {
+        await store.dispatch('categories/loadCategories')
       }
     })
   }   

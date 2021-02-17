@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -125,7 +125,7 @@ h3 {
 
 .container {
     margin: 0 auto;
-    max-width: 1000px;
+    max-width: 1100px;
 }
 
 .container.with-nav {
@@ -231,13 +231,14 @@ h3 {
 .list {
     margin: 0;
     padding: 0;
-    list-style: none;
+    list-style: square;
 }
 
 .list-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-decoration: underline;
     padding: 0.5rem;
     transition: .22s all;
     text-overflow: ellipsis;
@@ -563,41 +564,80 @@ td img {
 }
 
 .product-card {
-    width: 220px;
-    height: 200px;
-    border: 1px solid #ccc;
+    width: 250px;
+    height: 32rem;
+    /* border: 1px solid #ccc; */
     margin-right: 1rem;
     margin-bottom: 1rem;
     transition: .22s box-shadow;
     cursor: pointer;
 }
 
-.product-card:hover {
+/* .product-card:hover {
     box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);;
-}
+} */
 
 .product-img {
     width: 100%;
-    padding: 0 .5rem;
+    height: 380px;
     display: flex;
     justify-content: center;
 }
 
 .product-img img {
-    width: 60%;
+    max-width: 100%;
     height: auto;
 }
 
 .product-title {
-    text-align: center;
+    text-align: left;
     margin: 0;
-    margin-bottom: .5rem;
+    margin-top: 1rem;
+    letter-spacing: 1px;
+    line-height: 24px;
 }
 
 .product-controls {
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.product-price {
+  font-size: 1.15rem;
+  color: #3cb878;
+  letter-spacing: 1px;
+  line-height: 24px;
+  margin-bottom: 0.4rem;
+}
+
+.product-image {
+  width: 28rem;
+  height: 37.5rem;
+}
+
+.product-gallery {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 28rem;
+  height: 8.2rem;
+}
+
+.product-gallery img {
+  width: 5.6rem;
+  height: 6.25rem;
+}
+
+.product-description {
+  width: 32rem;
+  font-size: 15px;
+  letter-spacing: 0px;
+  line-height: 24px;
+  color: #232323;
+  font-weight: 400;
+    font-family: "Roboto"
 }
 
 .product-controls button {
@@ -620,8 +660,9 @@ td img {
 .products-table {
     display: flex;
     flex-wrap: wrap;
-    width: 750px;
+    /* width: 750px; */
     padding: 1rem;
+    /* padding-left: .6rem; */
 }
 
 .pagination {
