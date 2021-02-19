@@ -17,23 +17,22 @@
 </template>
 
 <script>
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import StarRating from 'vue-star-rating'
 import { useStore } from 'vuex'
 import {currency} from '@/utils/currency.js';
 export default {
+  components: {
+    StarRating,
+  },
   props: {
     filters: {
       type: Object,
       required: true
     }
   },
-  components: {
-    StarRating,
-  },
   setup(props) {
       const store = useStore()
-      const CART_MODEL = reactive({})
       const rating = ref(3)
       onMounted(async () => {
         await store.dispatch('products/loadAllProducts')
@@ -64,25 +63,9 @@ export default {
           .sort((el, nextEl) => nextEl.count - el.count)
       )
 
-      const addProduct = (product) => {
-        CART_MODEL[product.id] ? CART_MODEL[product.id]++ :CART_MODEL[product.id] = 1
-      }
-
-      const deleteProduct = (product) => {
-        CART_MODEL[product.id] === 0  ? delete CART_MODEL[product.id] :CART_MODEL[product.id]--
-      }
-
-      const setRating = (rating) => {
-      rating.value = rating;
-    }
-
       return {
         allProducts,
         currency,
-        addProduct,
-        CART_MODEL,
-        deleteProduct,
-        setRating,
         rating
       }     
   }

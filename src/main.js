@@ -8,12 +8,13 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faInstagram, faTwitter, faLinkedinIn, faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
 import { faTimesCircle, faHeart } from '@fortawesome/free-regular-svg-icons'
-import { faEnvelope, faPhone, faShoppingCart, faSearch, faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faPhone, faShoppingCart, faSearch, faExchangeAlt, faAngleDoubleLeft, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 import rate from 'vue-rate'
 import 'vue-rate/dist/vue-rate.css'
 import './index.css'
 
-library.add(faInstagram, 
+library.add(
+  faInstagram, 
   faFacebookSquare, 
   faLinkedinIn, 
   faPhone, 
@@ -23,13 +24,15 @@ library.add(faInstagram,
   faSearch,
   faTimesCircle,
   faHeart,
-  faExchangeAlt
+  faExchangeAlt,
+  faAngleDoubleLeft,
+  faAngleDoubleRight
   )
 
 const requireComponent = require.context(
     './components',
     false,
-    /Base[A-Z]\w+\.(vue|js)$/
+    /App[A-Z]\w+\.(vue|js)$/
 )
 
 const app = createApp(App)

@@ -3,7 +3,7 @@
       <div class="form-control">
         <input 
           type="text" 
-          placeholder="Найти товар..."
+          placeholder="Search..."
           v-model="search"
         >
         <span 
@@ -50,7 +50,8 @@
               :prefix="searchSchema.prefix"
               :link="searchSchema"
               @click.prevent="setPriceFilter"
-              class="text-white inline-block absolute t-9"
+              class="text-white text-center inline-block"
+              style="height:inherit; width:inherit; line-height: 32px;"
             />
           </div>
       </div>
@@ -64,9 +65,7 @@ import { useStore } from 'vuex'
 import VueSlider from 'vue-slider-component'
 import {searchSchema} from '@/utils/schemes.js'
 import 'vue-slider-component/theme/default.css'
-import AppInput from '../ui/AppInput.vue'
 import AppLink from '../ui/AppLink.vue'
-import { useRoute } from 'vue-router'
 export default {
   props: {
     modelValue: {
@@ -76,25 +75,24 @@ export default {
   },
   components: {
     VueSlider,
-    AppInput,
     AppLink,
   },
   setup(props, {emit}) {
     const store = useStore()
-    const route = useRoute()
 
-    const search = ref(props.modelValue.search || '')
     const category = ref(props.modelValue.category || '')
-    const range = ref([10, 3000])
-    const price = ref(null)
-
+    const categories = computed(() => store.getters['categories/categories'])
+    const setCategory = val => category.value = val
     onMounted(async () => {
       await store.dispatch('categories/loadCategories')
     })
 
-    const setCategory = val => category.value = val
-    const categories = computed(() => store.getters['categories/categories'])
+
+    const search = ref(props.modelValue.search || '')
+    const range = ref([10, 3000])
+    const price = ref(null)
     const setPriceFilter = () => price.value = range.value
+
 
     watch([search, category, price], val => {
       emit('update:modelValue', {
@@ -102,10 +100,6 @@ export default {
         category: val[1],
         price: val[2]
       })
-    })
-
-    watch(route, val => {
-      console.log(val);
     })
 
     return {

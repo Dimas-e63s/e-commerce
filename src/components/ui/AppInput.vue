@@ -1,13 +1,12 @@
 <template>
-   <div :class="['form-control', {'invalid': error}]">
-       <label for="label">{{label}}</label>
+   <div :class="[containerClass, 'form-control', {'invalid': error}]">
+       <label class="text-sm font-roboto text-gray-500" for="label">{{label}} <small class="text-red-600" v-if="required">*</small> </label>
        <input 
-         v-bind="$attrs" 
+         v-bind="$attrs"
          :value="modelValue"
          :placeholder="placeholder"
-         @input="$emit('update:modelValue', $event.target.value)"
        >
-       <slot name="end"></slot>
+       <small v-if="error">{{error}}</small>
    </div>
  </template>
 
@@ -16,7 +15,6 @@ export default {
   inheritAttrs: false,
   props: {
     modelValue: {
-      type: [String, Number],
       required: true
     },
     placeholder: {
@@ -29,6 +27,14 @@ export default {
     },
     error: {
       required: false
+    },
+    containerClass: {
+      type: String,
+      required: false
+    },
+    required: {
+      type: Boolean,
+      
     }
   },
   emits: ['update:modelValue']        

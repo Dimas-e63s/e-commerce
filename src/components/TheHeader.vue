@@ -14,7 +14,7 @@
            :key="contact.icon"
            :link="contact"
            :prefix="headerTemplate.prefix"
-           class="text-white"
+           class="text-white ml-4"
          />
       </div>
    </header>

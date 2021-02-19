@@ -21,8 +21,8 @@
 export default {
   methods: {
     logout() {
-      this.$store.commit('auth/DELETE_TOKEN')
-      this.$router.push({name: 'auth'})
+      this.$store.commit('auth/LOGOUT')
+      this.$router.push('/')
     }
   }
 }

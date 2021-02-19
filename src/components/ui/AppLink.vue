@@ -1,9 +1,10 @@
 <template>
    <a
      class="cursor-pointer"
+     v-bind="$attrs"
      :href="link.url" 
      target="_blank">
-     <font-awesome-icon :class="prefix ? 'mr-4' : ''" :icon="[prefix, link.icon]" size="lg"/>
+     <font-awesome-icon :icon="[prefix, link.icon]" size="lg"/>
      <slot/>
      <span 
        v-if="link.text"

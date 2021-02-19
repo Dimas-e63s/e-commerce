@@ -1,21 +1,6 @@
 <template>
-<div class="flex flex-row">
-
-   <div class="w-3/5 mb-40">
-     <AppDynamicForm
-       :schema="checkoutTopSchema"
-       class="flex"
-     >
-        Billing details
-     </AppDynamicForm>
-     <AppDynamicForm
-       :schema="checkoutMainSchema"
-     />
-     <AppDynamicForm
-       :schema="checkoutFootSchema"
-       class="flex"
-     />
-   </div>
+<form class="flex flex-row" @submit.prevent="onSubmit">
+   <checkout-form/>
    <div class="w-2/5 ml-6">
         <table class="border border-t-0 w-full text-sm">
           <caption class="uppercase border border-b-0 text-left font-poppins px-9 py-8">Your Order</caption>
@@ -54,29 +39,46 @@
           </tfoot>
         </table>
         <div class="pl-3 py-4 text-right">
-          <button class="h-12 w-48 text-base bg-green-500 px-10 py-2 text-white uppercase">Place Order</button>
+          <button 
+            class="h-12 w-48 text-base bg-green-500 px-10 py-2 text-white uppercase"
+          >Place Order</button>
         </div>
    </div>
-</div>
+</form>
 </template>
 
 <script>
-import {checkoutTopSchema, checkoutMainSchema, checkoutFootSchema} from '@/utils/schemes.js'
-import AppDynamicForm from '../components/ui/AppDynamicForm.vue'
 import {currency} from '@/utils/currency.js'
 import { useCartTotal } from '@/use/cartTotal.js'
+import {useCheckoutForm} from '@/use/checkoutForm.js'
+import {pay} from '@/utils/pay.js'
+import CheckoutForm from '@/components/checkout/CheckoutForm.vue'
+import {useStore} from 'vuex'
+// 
 export default {
-  components: { AppDynamicForm },
+  components: { CheckoutForm },
   setup() {
-    const { totalPrice, products } = useCartTotal()
+    const { totalPrice, products, total } = useCartTotal()
+    const store = useStore()
+    const {handleSubmit} = useCheckoutForm()
 
+    const onSubmit = handleSubmit(async val =>{
+      try {
+        await store.dispatch('order/createOrder')
+        await pay({
+          amount: total.value,
+          description: 'Thank you for you shopping;)'
+        })
+      } catch (e) {
+        console.log(e.message);
+      }
+    })
+    
     return {
-      checkoutTopSchema,
-      checkoutMainSchema,
-      checkoutFootSchema,
       currency,
       products,
-      totalPrice
+      totalPrice,
+      onSubmit
     }
   }        
 }

@@ -19,13 +19,11 @@
 </template>
 
 <script>
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { useStore } from 'vuex'
-import CartItem from "@/components/cart/CartItem.vue"
 import WishItem from '../components/wishlist/WishItem.vue'
 export default {
   components: {
-    CartItem,
     WishItem,
   },
   setup() {

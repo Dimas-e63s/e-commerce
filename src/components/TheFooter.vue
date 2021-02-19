@@ -10,7 +10,7 @@
             :key="contact.icon"
             :link="contact"
             :prefix="headerTemplate.prefix"
-            class="text-black inline-block"
+            class="text-black inline-block ml-4"
             />
         </div>
     </div>

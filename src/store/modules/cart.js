@@ -22,6 +22,10 @@ export default {
     DECREASE_QUANTITY(state, id) {
       state.cart[id].quantity--
       setCartToLS(state)
+    },
+    CLEAR_CART(state) {
+      state.cart = {}
+      localStorage.removeItem('cart')
     }
   },
   getters: {
@@ -42,6 +46,9 @@ export default {
       } catch (e) {
         console.log(e.message);
       }
+    },
+    clearCart({commit}) {
+      commit('CLEAR_CART')
     },
     updateProductInCart({commit, getters}, {id, quantaty}) {
       const idx = getters.getProductIdxByIdFromCart(id)

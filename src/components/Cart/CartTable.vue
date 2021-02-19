@@ -19,7 +19,10 @@
       </tbody>
     </table>
     <div class="px-3 py-4 border-l border-r border-b text-right">
-      <button class="bg-green-500 px-10 py-2 text-white uppercase">Continue Shopping</button>
+      <button 
+        class="bg-green-500 px-10 py-2 text-white uppercase"
+        @click="$router.push('/')"
+      >Continue Shopping</button>
     </div>
     <div class="flex justify-center flex-row align-center mb-40">
       <div class="w-1/2 px-2">
@@ -27,7 +30,10 @@
           :schema="availabilitySchema"
         >Shipping Availaility
         <template #footer>
-          <button class="px-10 py-2 mt-2 border uppercase">Continue Shopping</button>
+          <button 
+            class="px-10 py-2 mt-2 border uppercase"
+            @click="$router.push('/')"
+          >Continue Shopping</button>
         </template>
         </app-dynamic-form>
       </div>
@@ -54,7 +60,10 @@
           </tfoot>
         </table>
         <div class="px-3 py-4 text-right">
-          <button class="h-12 w-72 text-base bg-green-500 px-10 py-2 text-white uppercase">Proceed to Checkout</button>
+          <button 
+            class="h-12 w-72 text-base bg-green-500 px-10 py-2 text-white uppercase"
+            @click="$router.push('/checkout')"
+          >Proceed to Checkout</button>
         </div>
       </div>
     </div>
@@ -72,12 +81,6 @@ export default {
     CartItem,
     AppDynamicForm,
   },
-  // props: {
-  //   products: {
-  //     type: Object,
-  //     required: true,
-  //   },
-  // },
   setup() {
     const model = ref('Select Country')
     const { totalPrice, products } = useCartTotal()

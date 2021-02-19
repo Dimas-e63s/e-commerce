@@ -24,7 +24,6 @@ const routes = [
     component: () => import('../views/Admin.vue'),
     meta: {
       layout: 'admin',
-      auth: true,
       admin: true
     },
     children: [
@@ -90,11 +89,24 @@ const router = createRouter({
 
 router.beforeEach((to, _, next) => {
   const isAuthenticated = store.getters['auth/isAuthenticated']
-  if(!isAuthenticated && to.meta.auth) {
-    next({name: 'auth'})
-  } else {
-    next()
+  const isAdmin = store.getters['auth/isAdmin']
+
+  if(to.meta.admin) {
+    if(isAdmin) {
+      next()
+    } else {
+      next({name: 'auth', query: {goTo: to.name}})
+    }
   }
+
+  if(to.meta.auth) {
+    if(!isAuthenticated) {
+      return next({name: 'auth', query: {goTo: to.name}})
+    } else {
+      return next()
+    }
+  } 
+  next()
 })
 
 export default router

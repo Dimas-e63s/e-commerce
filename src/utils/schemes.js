@@ -32,7 +32,15 @@ const email = {
   placeholder: 'Your e-mail...'
 }
 
-const emailValidation = {email: yup.string().email('Please enter a valid e-mail').required('E-mail is required')}
+const emailValidation = yup.string().email('Please enter a valid e-mail').required('E-mail is required')
+
+const name = {
+  name: 'name',
+  as: 'input',
+  type: 'text',
+}
+
+const nameValidation = {name: yup.string().required('Name is required')}
 
 export const productSchema = {
     fields: [
@@ -161,18 +169,12 @@ export const availabilitySchema = {
 
 export const reviewSchema = {
   fields: [
-    {
-      name: 'name',
-      as: 'input',
-      type: 'text',
-      class: 'w-1/2 inline-block',
-      placeholder: 'Your name...'
-    },
+    {...name, class: 'w-1/2 inline-block', placeholder: 'Your name...'},
     {...email, class: 'w-1/2 inline-block ml-4',},
   ],
   validation: yup.object().shape({
     name: yup.string().required('Name is required'),
-    ...emailValidation,
+    email: emailValidation,
   })
 }
 
@@ -248,5 +250,33 @@ export const checkoutFootSchema = {
   validation: yup.object().shape({
     ...emailValidation,
     phone: yup.string().required('Phone Number is required')
+  })
+}
+
+export const loginSchema = {
+  fields: [
+    {...email, label: 'Email', placeholder: ''},
+    {
+      name: 'password',
+      as: 'input',
+      type: 'password',
+      label: 'Password',
+    },
+  ],
+  validation: yup.object().shape({
+    email: emailValidation,
+    password: yup.string().required('Password is required').min(6, 'Password must be at least 6 characters')
+  })
+}
+
+export const registerSchema = {
+  fields: [
+    {...name, label: 'Name'},
+    ...loginSchema.fields,
+  ],
+  validation: yup.object().shape({
+    email: emailValidation,
+    password: yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
+    ...nameValidation
   })
 }
