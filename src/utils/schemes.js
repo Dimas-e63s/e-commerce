@@ -280,3 +280,11 @@ export const registerSchema = {
     ...nameValidation
   })
 }
+
+export const options = [
+  {title: 'Select size', value: 'select'},
+  {title: 'S', type: 's'},
+  {title: 'M', type: 'm'},
+  {title: 'L', type: 'l'},
+  {title: 'XL', type: 'xl'},
+]

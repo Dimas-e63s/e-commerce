@@ -1,13 +1,13 @@
 <template>
    <AppModal :title="title" @close="$emit('reject')">
-       <button 
-         class="btn primary"
-         @click="$emit('confirm')"
-        >Yes</button>
-       <button 
-         class="btn danger"
-         @click="$emit('reject')"
-        >No</button>
+      <button 
+        class="btn primary"
+        @click="$emit('confirm')"
+      >Yes</button>
+      <button 
+        class="btn danger"
+        @click="$emit('reject')"
+      >No</button>
    </AppModal>
 </template>
 

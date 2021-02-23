@@ -1,15 +1,15 @@
 <template>
-   <a
-     class="cursor-pointer"
-     v-bind="$attrs"
-     :href="link.url" 
-     target="_blank">
-     <font-awesome-icon :icon="[prefix, link.icon]" size="lg"/>
-     <slot/>
-     <span 
-       v-if="link.text"
-       class="inline-block ml-2"
-     >{{ link.text }}</span>
+  <a
+    class="icon"
+    v-bind="$attrs"
+    :href="link.url" 
+    target="_blank">
+    <font-awesome-icon :icon="[prefix, link.icon]" size="lg"/>
+    <slot/>
+    <span 
+      v-if="link.text"
+      class="icon__text"
+    >{{ link.text }}</span>
   </a>
 </template>
 
@@ -21,12 +21,20 @@ export default {
       required: true
     },
     prefix: {
-      type: String
+      type: String,
+      required: true
     }
   }        
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.icon {
+  cursor: pointer;
+}
 
+.icon__text {
+  display: inline-block;
+  margin-left: 0.5rem;
+}
 </style>

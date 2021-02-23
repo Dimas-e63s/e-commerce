@@ -1,28 +1,28 @@
 <template>
-   <header class="bg-black h-16 flex justify-between flex-row text-white">
-     <div class="my-auto">
-         <AppLink
-           v-for="contact in headerTemplate.contacts"
-           :key="contact.icon"
-           :link="contact"
-           class="ml-16 inline-block text-white"
-         />
+   <header class="header">
+     <div class="header__contact">
+        <AppLink
+          v-for="contact in headerTemplate.contacts"
+          :key="contact.icon"
+          :link="contact"
+          class="header__link"
+        />
      </div>
-      <div class="my-auto mr-16">
-          <AppLink
-           v-for="contact in headerTemplate.media"
-           :key="contact.icon"
-           :link="contact"
-           :prefix="headerTemplate.prefix"
-           class="text-white ml-4"
-         />
+      <div class="header__media">
+        <AppLink
+          v-for="contact in headerTemplate.media"
+          :key="contact.icon"
+          :link="contact"
+          :prefix="headerTemplate.prefix"
+          class="header__link"
+        />
       </div>
    </header>
 </template>
 
 <script>
 import {headerTemplate} from '@/utils/template.js'
-import AppLink from '@/components/ui/AppLink.vue';
+import AppLink from '@/components/ui/AppLink.vue'
 export default {
   components: {
     AppLink,
@@ -35,6 +35,31 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
+  height: 4rem;
+  
+  background: #000;
+  color: #fff;
+}
+
+.header__contact {
+  margin: auto 0;
+  margin-left: 4rem;
+}
+
+.header__link {
+  display: inline-block;
+  color: #fff;
+  margin-left: 1rem;
+}
+
+.header__media {
+  margin: auto 0;
+  margin-right: 4rem;
+}
 </style>

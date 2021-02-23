@@ -14,8 +14,18 @@ if(process.env.NODE_ENV === 'development') {
 export default createStore({
   plugins,
   state: {
+    hasFocus: null
+  },
+  getters: {
+    hasFocus: state => state.hasFocus
   },
   mutations: {
+    focus(state) {
+      state.hasFocus = true
+    },
+    blur(state) {
+      state.hasFocus = false
+    }
   },
   actions: {
   },

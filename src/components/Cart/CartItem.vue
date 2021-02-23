@@ -1,28 +1,23 @@
 <template>
-  <tr>
-    <td class="border-l border-b flex align-center">
-      <img class="w-36" :src="product.img" :alt="product.title">
-      <h3 class="ml-4 my-auto">{{ product.title }}</h3>
+  <tr class="item">
+    <td class="item__image-container">
+      <img class="item__image" :src="product.img" :alt="product.title">
+      <h3 class="item__title">{{ product.title }}</h3>
     </td>
-    <td class="border text-center">
+    <td class="item__size">
       <p>color: black</p>
       <p>size: XL</p>
     </td>
-    <td class="border text-center">
-      <!-- <input 
-        class="inline-block w-6 outline-none w-8 border" 
-        type="number"
-        v-model="product.quantity"
-      > -->
-      <button class="px-2" @click="addToCart">+</button>
-        <small class="inline-block w-12 border">{{ product.quantity }}</small>
-      <button class="px-2" @click="decreaseAmount">-</button>
+    <td>
+      <button class="item__actions" @click="addToCart">+</button>
+        <small class="item__quantity">{{ product.quantity }}</small>
+      <button class="item__actions" @click="decreaseAmount">-</button>
     </td>
-    <td class="border text-center">{{ currency(product.price) }}</td>
-    <td class="border text-center relative">
-      {{ totalPrice }}
+    <td class="item__price">{{ currency(product.price) }}</td>
+    <td class="item__price item__price--relative">
+      {{ totalProductPrice }}
       <font-awesome-icon 
-        class="right-2 absolute cursor-pointer" 
+        class="item__icon" 
         :icon="['far', 'times-circle']" 
         size="lg"
         @click="deleteFromCart"
@@ -32,8 +27,8 @@
 </template>
 
 <script>
-import {currency} from '@/utils/currency.js'
 import { computed } from 'vue'
+import {currency} from '@/utils/currency.js'
 import {useProductActions} from '@/use/productActions.js'
 export default {
   emits: ['change'],
@@ -48,17 +43,69 @@ export default {
     }
   },
   setup(props) {
-    console.log(props);
     const {addToCart, decreaseAmount, deleteFromCart } = useProductActions(props.id)
 
-    const totalPrice = computed(() => currency(props.product.price * props.product.quantity))
+    const totalProductPrice = computed(() => currency(props.product.price * props.product.quantity))
     return {
       addToCart,
       decreaseAmount,
       currency,
-      totalPrice,
-      deleteFromCart
+      totalProductPrice,
+      deleteFromCart,
     }
   }
 }
 </script>
+
+<style scoped>
+.item {
+  text-align: center;
+  border-width: 1px;
+}
+
+.item__image-container {
+  display: flex;
+  align-items: center;
+  border-right-width: 1px;
+}
+
+.item__image {
+  width: 9rem;
+  padding: 2rem 0;
+  padding-left: 1.5rem;
+}
+
+.item__title {
+  margin: 0 auto;
+  margin-left: 1rem;
+}
+
+.item__size {
+  border-right-width: 1px;
+}
+
+.item__actions {
+  padding: 0 .5rem;
+}
+
+.item__quantity {
+  display: inline-block;
+  width: 3rem;
+  border-width: 1px;
+}
+
+.item__price {
+  border-width: 1px;
+}
+
+.item__price--relative {
+  position: relative;
+}
+
+.item__icon {
+  position: absolute;
+  right: 0.5rem;
+
+  cursor: pointer;
+}
+</style>

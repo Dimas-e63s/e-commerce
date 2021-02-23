@@ -1,32 +1,32 @@
 <template>
-  <h4 v-if="slots.default" class="uppercase font-poppins py-8"><slot/></h4>
+  <slot></slot>
   <Form 
     :validation-schema="schema.validation" 
     :initial-values="schema.values"
     @submit="onSubmit"
     v-slot="{errors}"
-    class="pt-4"
     v-bind="$attrs"
   >
-      <div 
-        v-for="{as, name, label, labelClass, children, ...attrs} in schema.fields" 
-        :key="name" 
-        :class="['form-control', {'invalid': errors[name]}, attrs.class]">
-        <label v-if="label" class="font-roboto text-gray-500 pb"  :class="labelClass" :for="name">{{ label }}</label> 
+    <div 
+      v-for="{as, name, label, labelClass, children, ...attrs} in schema.fields" 
+      :key="name" 
+      :class="['form-control', {'invalid': errors[name]}, attrs.class]"
+      >
+      <label v-if="label" class="font-roboto label"  :class="labelClass" :for="name">{{ label }}</label> 
         <Field 
           :as="as" 
           :id="name" 
           :name="name" 
           v-bind="attrs">
           <template v-if="children && children.length">
-              <component 
-                class="font-roboto text-gray-500"
-                v-for="({ tag, text, ...childAttrs }, idx) in children" 
-                :key="idx" 
-                :is="tag"
-                v-bind="childAttrs"
-                >{{text}}</component>
-          </template>
+            <component 
+              class="font-roboto label"
+              v-for="({ tag, text, ...childAttrs }, idx) in children" 
+              :key="idx" 
+              :is="tag"
+              v-bind="childAttrs"
+              >{{text}}</component>
+        </template>
         </Field>
         <ErrorMessage 
           as="small" 
@@ -34,7 +34,7 @@
           class="invalid"/>
     </div>
       <slot name="footer"/>
-   </Form> 
+  </Form> 
 </template>
 
 <script>
@@ -52,7 +52,7 @@ export default {
     }
   }, 
   emits: ['submited'],
-  setup(_, {slots,emit}) {
+  setup(_, {slots, emit}) {
     const onSubmit = (val) => emit('submited', val)
     return {
       slots,

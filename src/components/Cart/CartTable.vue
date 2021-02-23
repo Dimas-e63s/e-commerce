@@ -1,85 +1,41 @@
 <template>
-    <table class="w-full font-roboto border-collapse table-fixed tracking-wide">
+    <table class="table font-roboto">
       <thead>
         <tr>
-          <th class="border py-8 w-4/12">Products</th>
-          <th class="border py-8 w-2/12">Color &#38; Size</th>
-          <th class="border py-8 w-2/12">Quantaty</th>
-          <th class="border py-8 w-2/12">Price</th>
-          <th class="border py-8 w-2/12">Total</th>
+          <th class="table__header table__header--main">Products</th>
+          <th class="table__header">Color &#38; Size</th>
+          <th class="table__header">Quantaty</th>
+          <th class="table__header">Price</th>
+          <th class="table__header">Total</th>
         </tr>
       </thead>
       <tbody>
         <CartItem 
-            v-for="(product, key) in products"
-            :key="key"
-            :product="product"
-            :id="key"
+          v-for="(product, key) in products"
+          :key="key"
+          :product="product"
+          :id="key"
       ></CartItem>
       </tbody>
     </table>
-    <div class="px-3 py-4 border-l border-r border-b text-right">
+    <div class="table__footer">
       <button 
-        class="bg-green-500 px-10 py-2 text-white uppercase"
+        class="button button--success"
         @click="$router.push('/')"
       >Continue Shopping</button>
     </div>
-    <div class="flex justify-center flex-row align-center mb-40">
-      <div class="w-1/2 px-2">
-        <app-dynamic-form
-          :schema="availabilitySchema"
-        >Shipping Availaility
-        <template #footer>
-          <button 
-            class="px-10 py-2 mt-2 border uppercase"
-            @click="$router.push('/')"
-          >Continue Shopping</button>
-        </template>
-        </app-dynamic-form>
-      </div>
-      <div class="w-1/2 px-2">
-        <table class="border w-full">
-          <caption class="uppercase text-left font-poppins py-8">Shopping Cart Calculation</caption>
-          <tr>
-            <td class="py-5 px-9">Subtotal</td>
-            <td class="py-5 px-9 text-right">{{ totalPrice }}</td>
-          </tr>
-          <tr>
-            <td class="px-9 pb-5">Coupon</td>
-            <td class="text-right px-9">{{ currency(0)}}</td>
-          </tr>
-          <tr>
-            <td class="pb-8 px-9">Shipping</td>
-            <td class="pb-8 px-9 text-right">Free Shipping</td>
-          </tr>
-          <tfoot class="border-t">
-            <tr>
-              <td class="py-6 px-9">Total</td>
-              <td class="py-6 px-9 text-right">{{ totalPrice }}</td>
-            </tr>
-          </tfoot>
-        </table>
-        <div class="px-3 py-4 text-right">
-          <button 
-            class="h-12 w-72 text-base bg-green-500 px-10 py-2 text-white uppercase"
-            @click="$router.push('/checkout')"
-          >Proceed to Checkout</button>
-        </div>
-      </div>
-    </div>
+    <CartForm :totalPrice="totalPrice"/>
 </template>
 
 <script>
 import { ref } from "vue";
-import {currency} from '@/utils/currency.js'
-import CartItem from "@/components/cart/CartItem.vue";
-import AppDynamicForm from '../ui/AppDynamicForm.vue';
-import {availabilitySchema} from '@/utils/schemes.js'
+import CartItem from "@/components/cart/CartItem.vue"
 import { useCartTotal } from '@/use/cartTotal.js'
+import CartForm from '@/components/cart/CartForm.vue'
 export default {
   components: {
     CartItem,
-    AppDynamicForm,
+    CartForm,
   },
   setup() {
     const model = ref('Select Country')
@@ -88,10 +44,52 @@ export default {
     return {
       totalPrice,
       model,
-      availabilitySchema,
-      currency,
       products
     }
   }
 };
 </script>
+
+<style scoped>
+.table {
+  width: 100%;
+
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  letter-spacing: 0.025em;
+  border-width: 1px;
+}
+
+.table__header {
+  width: 16.666667%;
+  padding: 2rem 0;
+
+  border-width: 1px;
+}
+
+.table__header--main {
+  width: 33.333333%;
+}
+
+.table__footer {
+  text-align: right;
+  padding: 1rem 0.75rem;
+  border-width: 1px;
+  border-top-width: 0;
+}
+
+.button {
+  margin-top: 0.5rem;
+  padding: .5rem 2.5rem;
+
+  border-width: 1px;
+  text-transform: uppercase;
+  line-height: 1.5rem;
+}
+
+.button--success {
+  background-color: #10B981;
+  color: #fff;
+}
+</style>

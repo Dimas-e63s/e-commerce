@@ -1,45 +1,45 @@
 <template>
-   <footer class="border h-16">
-    <div class="container flex flex-row justify-between h-full">
-        <div class="my-auto text-roboto">
-            We’re confident we’ve provided all the best for you. Stay conne
-        </div>
-        <div class="my-auto">
-            <AppLink
-            v-for="contact in headerTemplate.media"
-            :key="contact.icon"
-            :link="contact"
-            :prefix="headerTemplate.prefix"
-            class="text-black inline-block ml-4"
-            />
-        </div>
+  <footer class="footer">
+    <div class="container footer__media">
+      <div class="footer__text text-roboto">
+        We’re confident we’ve provided all the best for you. Stay conne
+      </div>
+      <div class="footer__links-wrapper">
+        <AppLink
+          v-for="contact in headerTemplate.media"
+          :key="contact.icon"
+          :link="contact"
+          :prefix="headerTemplate.prefix"
+          class="footer__link"
+          />
+      </div>
     </div>
-    <div class="container flex flex-row align-center justify-between pb-20">
-        <div  
-          class="inline-block" 
-          v-for="list in navbarTemplate"
-          :key="list.title"
-        >
-        <h4 class="my-8 font-poppins">{{list.title}}</h4>
+    <div class="footer__nav container">
+      <div  
+        class="inline-block" 
+        v-for="list in navbarTemplate"
+        :key="list.title"
+      >
+        <h4 class="footer__title font-poppins">{{list.title}}</h4>
         <ul>
-            <li 
-              v-for="link in list.children" 
-              :key="link.text">
+          <li 
+            v-for="link in list.children" 
+            :key="link.text">
               <router-link
                 :to="link.url"
-                class="text-black font-roboto mb-2 inline-block hover:underline" 
-                href="">{{ link.text }}</router-link></li>
+                class="footer__link font-roboto" 
+                href="">{{ link.text }}
+              </router-link>
+          </li>
         </ul>
-        </div>
+      </div>
     </div>
-    <div class="bg-black">   
-        <div class="container text-gray-300 h-16 flex ">
-            <p class="my-auto">
-                Copyright 2017 RenoshopBee all right reserved  -  Design by Bee
-            </p>
-        </div>
+    <div class="footer__copyright">   
+      <div class="footer__container container">
+        <p class="footer__text">Copyright 2017 RenoshopBee all right reserved  -  Design by Bee</p>
+      </div>
     </div>
-   </footer>
+  </footer>
 </template>
 
 <script>
@@ -57,3 +57,56 @@ export default {
   }    
 }
 </script>
+
+<style scoped>
+.footer {
+  height: 4rem;
+  border-width: 1px;
+}
+
+.footer__media {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  height: 4rem;
+}
+.footer__text,
+.footer__links-wrapper {
+  margin: auto 0;
+}
+
+.footer__link {
+  color: #000;
+  margin-right: 1rem;
+  display: inline-block;
+}
+
+.footer__link:hover {
+  text-decoration: underline;
+}
+
+.footer__nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 5rem;
+}
+
+.footer__title {
+  margin: 2rem 0;
+}
+
+.footer__copyright {
+  background-color: #000;
+}
+
+.footer__container {
+  display: flex;
+  height: 4rem;
+
+  color: #D1D5DB;
+} 
+</style>

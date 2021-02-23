@@ -1,11 +1,11 @@
 <template>
-   <div class="form-control h-11">
+  <div class="form-control">
     <label 
       v-if="label"
-      class="font-roboto text-gray-500"
+      class="label font-roboto"
     >{{ label }}</label>
     <select 
-      class="h-11"
+      class="form-control__select"
       :value="modelValue"
       @change="$emit('update:modelValue', $event.target.value)"
     >
@@ -16,7 +16,7 @@
         :selected="modelValue === opt.type"
       >{{ opt.title }}</option>
     </select>
-   </div>
+  </div>
 </template>
 
 <script>
@@ -38,6 +38,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.form-control__select {
+  height: 2.75rem;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
    <div 
-      class="modal-backdrop"
+      class="modal__backdrop"
       @click="$emit('close')"
     ></div>
     <div class="modal">

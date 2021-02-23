@@ -1,6 +1,6 @@
 <template>
-<div class="w-2/4 h-screen mx-auto bg-white my-auto">
-   <div class="flex w-full justify-center mt-8">
+<div class="container">
+   <div class="tab-container">
       <button
       v-for="(tab, key) in tabs" 
       :class="['tab', { active: currentTab === key }]"
@@ -9,7 +9,7 @@
       >{{tab}}</button>
    </div>
    <component :is="currentTab"/>
-   </div>
+</div>
 </template>
 
 <script>
@@ -22,22 +22,30 @@ export default {
     Register
   },
   setup() {   
-		const currentTab = ref('Login')
+	  const currentTab = ref('Login')
     const tabs = {
       'Login': 'Already registerd?',
       'Register': 'New to Renoshop?'
     }
 
-   return {
+    return {
       currentTab,
       tabs,
-   }
-
-   }     
+    }
+  }     
 }
 </script>
 
 <style scoped>
+.tab-container {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+
+  margin-top: 2rem;
+}
+
 .tab {
    text-align: center;
    vertical-align: middle;
@@ -54,5 +62,12 @@ export default {
 .tab.active  {
   border: 1px solid black;
   border-bottom: none;
+}
+
+.container {
+  width: 50%;
+  height: 100vh;
+  margin: auto;
+  background-color: #fff;
 }
 </style>

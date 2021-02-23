@@ -5,8 +5,8 @@
     class="p-8"
   >
     <template #default class="text-center">
-            Sign In with Email
-        </template>
+      <h4  class="uppercase text-center font-poppins mt-16">Sign In with Email</h4>
+    </template>
         <template #footer>
         <div class="text-center mb-8">
             <button 

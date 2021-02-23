@@ -1,11 +1,10 @@
 <template>
-    <div class="card">
-      <h1 class="card-title">{{ title }}
-          <slot name="header"/>
-      </h1>
-
-      <slot/>
-    </div>
+  <div class="card">
+    <h1 class="card__title">{{ title }}
+      <slot name="header"/>
+    </h1>
+    <slot/>
+  </div>
 </template>
 
 <script>

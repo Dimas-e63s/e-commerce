@@ -43,10 +43,10 @@ export const navbarTemplate = [
     {
       title: 'My account',
       children: [
-        {text: 'Sign In', url: '/'},
+        {text: 'Sign In', url: '/auth'},
         {text: 'View Cart', url: '/cart'},
         {text: 'My Wishlist', url: '/wishlist'},
-        {text: ' Check out', url: '/'},
+        {text: 'Check out', url: '/checkout'},
         {text: 'My Order', url: '/'}
       ]
     },

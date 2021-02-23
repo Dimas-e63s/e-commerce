@@ -1,13 +1,7 @@
 <template>
-  <div class="flex flex-row">
-    <ProductFilter
-      class="w-1/3"
-      v-model="filters"
-    />
-    <ProductsList
-      class="w-2/3"
-      :filters="filters"
-    />
+  <div class="flex-container">
+    <ProductFilter v-model="filters"/>
+    <ProductsList :filters="filters"/>
   </div>
 </template>
 
@@ -49,11 +43,3 @@ import { useRoute, useRouter } from 'vue-router';
     }
   }
 </script>
-
-<style scoped>
-  .card {
-    border-radius: 4px;
-    padding: 0;
-    display: flex;
-  }
-</style>

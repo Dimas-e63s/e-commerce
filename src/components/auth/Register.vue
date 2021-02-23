@@ -4,8 +4,8 @@
     @submited="register"
     class="p-8"
   >
-    <template #default>
-        Sign Up with Email
+    <template #default class="text-center">
+      <h4  class="uppercase text-center font-poppins mt-16">Sign Up with Email</h4>
     </template>
     <template #footer>
       <div class="text-center mb-8">
