@@ -1,24 +1,11 @@
 # e-commerce
 
-## Project setup
-```
-npm install
-```
+### [Demo](https://e-commerce-f32e0.web.app)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+RenoshopBee - is e-commerce website build using Vue.js and Firebase. 
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+In the future will be added next functionalities:
+* main page
+* page for orders of a specific client
+* mobile versio
+* TypeScript support
