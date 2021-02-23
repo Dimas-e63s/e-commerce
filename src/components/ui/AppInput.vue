@@ -1,14 +1,18 @@
 <template>
-   <div :class="[containerClass, 'form-control', {'invalid': error}]">
-       <label class="text-sm font-roboto text-gray-500" for="label">{{label}} <small class="text-red-600" v-if="required">*</small> </label>
-       <input 
-         v-bind="$attrs"
-         :value="modelValue"
-         :placeholder="placeholder"
-       >
-       <small v-if="error">{{error}}</small>
-   </div>
- </template>
+  <div :class="[containerClass, 'form-control', { invalid: error }]">
+    <label class="label font-roboto form-control__label--small" :for="label"
+      >{{ label }}
+      <small class="form-control__asterick" v-if="required">*</small></label
+    >
+    <input
+      :id="label"
+      v-bind="$attrs"
+      :value="modelValue"
+      :placeholder="placeholder"
+    />
+    <small v-if="error">{{ error }}</small>
+  </div>
+</template>
 
 <script>
 export default {
@@ -33,14 +37,22 @@ export default {
       required: false
     },
     required: {
-      type: Boolean,
-      
+      type: Boolean
     }
   },
-  emits: ['update:modelValue']        
-}
+  emits: ['update:modelValue']
+};
 </script>
 
 <style lang="scss" scoped>
+.form-control {
+  &__asterick {
+    color: #dc2626;
+  }
 
+  &__label--small {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
 </style>

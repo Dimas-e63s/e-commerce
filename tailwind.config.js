@@ -4,12 +4,12 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      'poppins': 'Poppins, sans-serif',
-      'roboto': 'Roboto, sans-serif'
+      poppins: 'Poppins, sans-serif',
+      roboto: 'Roboto, sans-serif'
     }
   },
   variants: {
-    extend: {},
+    extend: {}
   },
-  plugins: [],
-}
+  plugins: []
+};

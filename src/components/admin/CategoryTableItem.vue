@@ -4,9 +4,9 @@
     <td>{{ category.title }}</td>
     <td>{{ category.type }}</td>
     <td>
-      <button 
-        @click="$emit('delete', category.id)"
-        class="btn danger">x</button>
+      <button @click="$emit('delete', category.id)" class="btn danger">
+        x
+      </button>
     </td>
   </tr>
 </template>
@@ -19,10 +19,8 @@ export default {
       required: true
     }
   },
-  emits: ['delete']      
-}
+  emits: ['delete']
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

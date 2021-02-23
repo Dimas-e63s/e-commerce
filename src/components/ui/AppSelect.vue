@@ -1,22 +1,21 @@
 <template>
-   <div class="form-control h-11">
-    <label 
-      v-if="label"
-      class="font-roboto text-gray-500"
-    >{{ label }}</label>
-    <select 
-      class="h-11"
+  <div class="form-control">
+    <label v-if="label" class="label font-roboto">{{ label }}</label>
+    <select
+      v-bind="$attrs"
+      class="form-control__select"
       :value="modelValue"
       @change="$emit('update:modelValue', $event.target.value)"
     >
-      <option 
+      <option
         v-for="opt in options"
         :key="opt.type"
         :value="opt.type"
         :selected="modelValue === opt.type"
-      >{{ opt.title }}</option>
+        >{{ opt.title }}</option
+      >
     </select>
-   </div>
+  </div>
 </template>
 
 <script>
@@ -34,10 +33,12 @@ export default {
       type: String,
       required: false
     }
-  }        
-}
+  }
+};
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.form-control__select {
+  height: 2.75rem;
+}
 </style>

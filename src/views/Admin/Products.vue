@@ -1,34 +1,27 @@
 <template>
   <AppPage title="Заявки">
     <template #header>
-      <button 
-        class="btn primary"
-        @click="modal = true"
-      >Создать</button>
+      <button class="btn primary" @click="modal = true">Создать</button>
     </template>
-     <ProductsList/>
+    <ProductsList />
   </AppPage>
 
-    <teleport to="body">
-      <AppModal 
-        v-if="modal"
-        @close="modal = false"
+  <teleport to="body">
+    <AppModal v-if="modal" @close="modal = false">
+      <AppDynamicForm :schema="productSchema" @submited="onSubmit"
+        >Создать продукт</AppDynamicForm
       >
-        <AppDynamicForm 
-          :schema="productSchema" 
-          @submited="onSubmit"
-        >Создать продукт</AppDynamicForm>
-      </AppModal>
-    </teleport>
+    </AppModal>
+  </teleport>
 </template>
 
 <script>
-import { ref } from 'vue'
-import { useStore } from 'vuex'
+import { ref } from 'vue';
+import { useStore } from 'vuex';
 import AppPage from '@/components/ui/AppPage.vue';
 import AppModal from '@/components/ui/AppModal.vue';
 import AppDynamicForm from '@/components/ui/AppDynamicForm.vue';
-import {productSchema} from'@/utils/schemes.js'
+import { productSchema } from '@/utils/schemes.js';
 import ProductsList from '@/components/admin/ProductsList.vue';
 export default {
   components: {
@@ -38,19 +31,19 @@ export default {
     ProductsList
   },
   setup() {
-    const store = useStore()
-    const modal = ref(false)
+    const store = useStore();
+    const modal = ref(false);
 
     const onSubmit = val => {
-      store.dispatch('products/addProduct', {...val, id: Date.now()})
-      modal.value = false
-    }
+      store.dispatch('products/addProduct', { ...val, id: Date.now() });
+      modal.value = false;
+    };
 
-    return  {
+    return {
       productSchema,
       onSubmit,
-      modal,
-    }
+      modal
+    };
   }
-}
+};
 </script>

@@ -1,29 +1,26 @@
 <template>
-  <tr>
-    <td class="border-l border-b flex align-center">
-      <img class="w-36" :src="product.img" :alt="product.title">
-      <h3 class="ml-4 my-auto">{{ product.title }}</h3>
+  <tr class="item">
+    <td class="item__image-container text-left">
+      <img class="item__image" :src="product.img[0]" :alt="product.title" />
+      <h3 class="item__title">{{ product.title }}</h3>
     </td>
-    <td class="border text-center">
+    <td data-title="Size" class="item__size">
       <p>color: black</p>
       <p>size: XL</p>
     </td>
-    <td class="border text-center">
-      <!-- <input 
-        class="inline-block w-6 outline-none w-8 border" 
-        type="number"
-        v-model="product.quantity"
-      > -->
-      <button class="px-2" @click="addToCart">+</button>
-        <small class="inline-block w-12 border">{{ product.quantity }}</small>
-      <button class="px-2" @click="decreaseAmount">-</button>
+    <td data-title="Quantaty">
+      <button class="item__actions" @click="decreaseAmount">-</button>
+      <small class="item__quantity">{{ product.quantity }}</small>
+      <button class="item__actions" @click="addToCart">+</button>
     </td>
-    <td class="border text-center">{{ currency(product.price) }}</td>
-    <td class="border text-center relative">
-      {{ totalPrice }}
-      <font-awesome-icon 
-        class="right-2 absolute cursor-pointer" 
-        :icon="['far', 'times-circle']" 
+    <td data-title="Price" class="item__price">
+      {{ currency(product.price) }}
+    </td>
+    <td data-title="Total" class="item__price item__price--relative">
+      {{ totalProductPrice }}
+      <font-awesome-icon
+        class="item__icon"
+        :icon="['far', 'times-circle']"
         size="lg"
         @click="deleteFromCart"
       />
@@ -32,9 +29,9 @@
 </template>
 
 <script>
-import {currency} from '@/utils/currency.js'
-import { computed } from 'vue'
-import {useProductActions} from '@/use/productActions.js'
+import { computed } from 'vue';
+import { currency } from '@/utils/currency.js';
+import { useProductActions } from '@/use/productActions.js';
 export default {
   emits: ['change'],
   props: {
@@ -48,17 +45,126 @@ export default {
     }
   },
   setup(props) {
-    console.log(props);
-    const {addToCart, decreaseAmount, deleteFromCart } = useProductActions(props.id)
+    const { addToCart, decreaseAmount, deleteFromCart } = useProductActions(
+      props.id
+    );
 
-    const totalPrice = computed(() => currency(props.product.price * props.product.quantity))
+    const totalProductPrice = computed(() =>
+      currency(props.product.price * props.product.quantity)
+    );
     return {
       addToCart,
       decreaseAmount,
       currency,
-      totalPrice,
+      totalProductPrice,
       deleteFromCart
+    };
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+@import '@/_variables';
+.item {
+  text-align: center;
+  border-width: 1px;
+  padding: 0.5rem;
+
+  @media (max-width: $breakpoint-tablet) {
+    margin-bottom: 2rem;
+    border-radius: 0.375rem;
+    box-shadow: 1px 2px 9px 2px #00000029;
+    & td {
+      display: table;
+      width: 100%;
+      border-collapse: separate;
+      border-top-width: 1px;
+      // remove some borders
+
+      &:first-child,
+      &:nth-child(2) {
+        border: 0 none;
+      }
+
+      &:first-child {
+        border: 0 none;
+      }
+      &:last-child {
+        font-weight: bold;
+      }
+    }
+    & td[data-title]:before {
+      content: attr(data-title) ': ';
+    }
+
+    & td:before {
+      white-space: nowrap;
+      width: 50%;
+      display: table-cell;
+      text-align: left;
+      // -- just styling
+      font-weight: bold;
     }
   }
+
+  &__image-container {
+    display: flex;
+    align-items: center;
+    border-right-width: 1px;
+  }
+
+  &__image {
+    width: 9rem;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+
+    @media (min-width: $breakpoint-tablet) {
+      border-radius: 0;
+      padding: 2rem 0;
+      padding-left: 1.5rem;
+      margin-bottom: 0rem;
+    }
+  }
+
+  &__title {
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    @media (min-width: $breakpoint-tablet) {
+      margin-bottom: 0;
+      margin-left: 1rem;
+    }
+  }
+
+  &__size {
+    border-right-width: 1px;
+  }
+
+  &__actions {
+    padding: 0 0.5rem;
+  }
+
+  &__quantity {
+    display: inline-block;
+    width: 3rem;
+    border-width: 1px;
+    color: black;
+  }
+
+  &__price {
+    border-width: 1px;
+    @media (max-width: $breakpoint-tablet) {
+      border-width: 0;
+    }
+
+    &--relative {
+      position: relative;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
+  }
 }
-</script>
+</style>
