@@ -1,32 +1,76 @@
-import axios from 'axios'
+import axios from 'axios';
+import store from '@/store/index.js';
+import router from '@/router/index.js';
 
-const apiClient = axios.create({
-  baseURL: 'http://localhost:3004/',
-  headers: {
-    "Content-Type": "application/json"
+export const apiClient = axios.create({
+  baseURL: 'https://e-commerce-f32e0-default-rtdb.firebaseio.com/'
+});
+
+apiClient.defaults.params = {};
+
+apiClient.interceptors.request.use(async config => {
+  if (!store.getters['auth/isAuthenticated']) {
+    return config;
   }
-})
+  if (store.getters['auth/isExpired']) {
+    await store.dispatch('auth/refresh');
+  }
+
+  config.params['auth'] = store.getters['auth/token'];
+
+  return config;
+});
+
+apiClient.interceptors.response.use(null, error => {
+  if (error.response.status === 401) {
+    store.commit('auth/LOGOUT');
+    router.push({ name: 'auth' });
+  }
+
+  return Promise.reject(error);
+});
 
 export default {
-  getProducts(ids = '') {
-    return apiClient.get('/products?' + ids)
+  getProducts() {
+    return apiClient.get('/products.json');
   },
-  getProductsByPage({page, limit}) {
-    return apiClient.get(`/products?_page=${page}&_limit=${limit}`)
+  getProductsByPage({ page, limit }) {
+    return apiClient.get(`/products?_page=${page}&_limit=${limit}`);
   },
-  updateProduct(payload) {
-    return apiClient.put(`/products/${payload.id}`, payload)
+  getProduct(id) {
+    return apiClient.get(`/products/${id}.json`);
+  },
+  updateProduct({ id, ...count }) {
+    return apiClient.patch(`/products/${id}.json`, count);
   },
   deleteProduct(id) {
-    return apiClient.delete(`/products/${id}`)
+    return apiClient.delete(`/products/${id}`);
   },
   getCategories() {
-    return apiClient.get('/categories')
+    return apiClient.get('/categories.json');
   },
   createCategory(category) {
-    return apiClient.post('/categories', category)
+    return apiClient.post('/categories.json', category);
+  },
+  createProduct(category) {
+    return apiClient.post('/products.json', category);
   },
   deleteCategory(id) {
-    return apiClient.delete(`/categories/${id}`)
+    return apiClient.delete(`/categories/${id}.json`);
   },
-}
+  createUser(id, body) {
+    return apiClient.put(`users/${id}.json`, body);
+  },
+  getUser(id) {
+    return apiClient.get(`users/${id}.json`);
+  },
+  createOrder(order) {
+    return apiClient.post('/orders.json', order);
+  },
+  createOrderToUser({ id, ...order }) {
+    return apiClient.post(`/users/${id}/orders.json`, order);
+  },
+  createReview({ productId: id, ...review }) {
+    return apiClient.post(`products/${id}/reviews.json`, review);
+  }
+};

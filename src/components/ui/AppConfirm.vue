@@ -1,18 +1,12 @@
 <template>
-   <AppModal :title="title" @close="$emit('reject')">
-       <button 
-         class="btn primary"
-         @click="$emit('confirm')"
-        >Yes</button>
-       <button 
-         class="btn danger"
-         @click="$emit('reject')"
-        >No</button>
-   </AppModal>
+  <AppModal :title="title" @close="$emit('reject')">
+    <button class="btn primary" @click="$emit('confirm')">Yes</button>
+    <button class="btn danger" @click="$emit('reject')">No</button>
+  </AppModal>
 </template>
 
 <script>
-import AppModal from './AppModal.vue'
+import AppModal from './AppModal.vue';
 export default {
   components: { AppModal },
   props: {
@@ -21,6 +15,6 @@ export default {
       required: true
     }
   },
-  emits: ['reject', 'confirm']     
-}
+  emits: ['reject', 'confirm']
+};
 </script>

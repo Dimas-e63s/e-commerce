@@ -1,50 +1,80 @@
 <template>
-  <div 
-    v-if="product"
-    class="card" 
-  >
-    <h1 class="card-title">{{ product.title }}</h1>
-    <img :src="product.img" />
-    <p>Категория: <strong>Название категории</strong></p>
-    <button class="btn">
-      {{ currency(product.price) }}
-    </button>
-    <!-- <div class="product-controls in-card">
-      <button class="btn danger">-</button>
-      <strong>12</strong>
-      <button class="btn primary">+</button>
-    </div> -->
-  </div>
-  <h3 
-    v-else
-    class="text-center text-white" 
-  >
-    Товара не найден.
-  </h3>
+  <template v-if="product">
+    <ProductMain :product="product" />
+    <div>
+      <button
+        v-for="tab in tabs"
+        :class="['tab', { active: currentTab === tab }]"
+        :key="tab"
+        @click="currentTab = tab"
+      >
+        {{ tab }}
+      </button>
+    </div>
+    <keep-alive>
+      <component
+        :is="currentTab + 'Tab'"
+        v-bind="{ reviews: product.reviews }"
+      />
+    </keep-alive>
+  </template>
 </template>
 
 <script>
-import {currency} from '@/utils/currency.js';
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
-import { useStore } from 'vuex'
+import { computed, onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { useStore } from 'vuex';
+import DescriptionTab from '@/components/product/DescriptionTab.vue';
+import ReviewsTab from '@/components/product/ReviewsTab.vue';
+import ProductMain from '@/components/product/Product.vue';
 export default {
+  components: {
+    DescriptionTab,
+    ReviewsTab,
+    ProductMain
+  },
   setup() {
-    const route = useRoute()
-    const store = useStore()
+    const route = useRoute();
+    const store = useStore();
+    const { id } = route.params;
 
-    const id = route.params.id
+    const currentTab = ref('Reviews');
+    const tabs = ['Description', 'Reviews'];
 
-    const product = computed(() => store.getters['products/getProductById'](id))
+    onMounted(async () => {
+      if (!product.value) {
+        await store.dispatch('products/loadProductById', id);
+      }
+    });
+    const product = computed(() =>
+      store.getters['products/getProductById'](id)
+    );
 
     return {
       product,
-      currency
-    }
+      currentTab,
+      tabs
+    };
   }
-}
+};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/_variables';
+.tab {
+  width: 7rem;
+  height: 2.75rem;
+  display: inline-block;
+  line-height: 44px;
+  vertical-align: bottom;
+  text-align: center;
 
+  @media (min-width: $breakpoint-tablet) {
+    width: 9rem;
+  }
+}
+
+.tab.active {
+  background: #e5e7eb;
+}
 </style>

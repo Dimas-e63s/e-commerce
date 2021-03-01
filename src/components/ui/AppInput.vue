@@ -1,21 +1,24 @@
 <template>
-   <div class="form-control">
-       <label for="label">{{label}}</label>
-       <input 
-         v-bind="$attrs" 
-         :value="modelValue"
-         :placeholder="placeholder"
-         @input="$emit('update:modelValue', $event.target.value)"
-       >
-       <slot name="end"></slot>
-   </div>
- </template>
+  <div :class="[containerClass, 'form-control', { invalid: error }]">
+    <label class="label font-roboto form-control__label--small" :for="label"
+      >{{ label }}
+      <small class="form-control__asterick" v-if="required">*</small></label
+    >
+    <input
+      :id="label"
+      v-bind="$attrs"
+      :value="modelValue"
+      :placeholder="placeholder"
+    />
+    <small v-if="error">{{ error }}</small>
+  </div>
+</template>
 
 <script>
 export default {
+  inheritAttrs: false,
   props: {
     modelValue: {
-      type: [String, Number],
       required: true
     },
     placeholder: {
@@ -25,12 +28,31 @@ export default {
     label: {
       type: String,
       required: false
+    },
+    error: {
+      required: false
+    },
+    containerClass: {
+      type: String,
+      required: false
+    },
+    required: {
+      type: Boolean
     }
   },
-  emits: ['update:modelValue']        
-}
+  emits: ['update:modelValue']
+};
 </script>
 
 <style lang="scss" scoped>
+.form-control {
+  &__asterick {
+    color: #dc2626;
+  }
 
+  &__label--small {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
 </style>

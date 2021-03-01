@@ -1,43 +1,35 @@
 <template>
-  <div class="card">
-    <h1>Корзина</h1>
-    <h3 
-      v-if="products.length === 0"
-      class="text-center"
-    >В корзине пока ничего нет</h3>
-    <CartTable 
-      v-else
-      :products="products" 
-    />
+  <div class="min-h-screen">
+    <AppFallbackMessage v-if="isCartEmpty"
+      >There is no products in cart ;(</AppFallbackMessage
+    >
+    <CartTable v-else />
   </div>
 </template>
 
 <script>
 import CartTable from '@/components/cart/CartTable.vue';
-import {useStore} from 'vuex'
-import { computed, onMounted } from 'vue';
-
-const CART_MODEL = {
-  '2': 3,
-  '5': 1
-}
+import { useStore } from 'vuex';
+import { computed } from 'vue';
+import AppFallbackMessage from '@/components/ui/AppFallbackMessage.vue';
 
 export default {
   components: {
-    CartTable
+    CartTable,
+    AppFallbackMessage
   },
   setup() {
-    const store = useStore()
+    const store = useStore();
 
-    onMounted(async() => {
-      await store.dispatch('products/loadProductsFromCart', CART_MODEL)
-    })
-
-    const products = computed(() => store.getters['products/productsCart'])
+    const products = computed(() => store.getters['cart/productsCart']);
+    const isCartEmpty = computed(
+      () => Object.keys(products.value).length === 0
+    );
 
     return {
       products,
-    }
+      isCartEmpty
+    };
   }
-}
+};
 </script>

@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import store from '@/store/index.js'
+import { createRouter, createWebHistory } from 'vue-router';
+import store from '@/store/index.js';
 
 const routes = [
   {
@@ -24,7 +24,7 @@ const routes = [
     component: () => import('../views/Admin.vue'),
     meta: {
       layout: 'admin',
-      auth: false
+      admin: true
     },
     children: [
       {
@@ -35,14 +35,14 @@ const routes = [
       {
         path: 'categories',
         name: 'categories',
-        component: () => import('../views/Admin/Categories.vue'),
+        component: () => import('../views/Admin/Categories.vue')
       },
       {
         path: 'products/:id',
         name: 'productEdit',
         props: true,
-        component: () => import('../views/Admin/ProductEdit.vue'),
-      },
+        component: () => import('../views/Admin/ProductEdit.vue')
+      }
     ]
   },
   {
@@ -60,23 +60,59 @@ const routes = [
     meta: {
       layout: 'main'
     }
+  },
+  {
+    path: '/checkout',
+    name: 'checkout',
+    component: () => import('../views/Checkout.vue'),
+    meta: {
+      layout: 'main',
+      auth: true
+    }
+  },
+  {
+    path: '/wishlist',
+    name: 'wishlist',
+    component: () => import('../views/WishList.vue'),
+    meta: {
+      layout: 'main'
+    }
   }
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
   linkActiveClass: 'active',
-  linkExactActiveClass: 'active'
-})
+  linkExactActiveClass: 'active',
+  scrollBehavior: (_, _2, savedPosition) => {
+    if (savedPosition) {
+      return { ...savedPosition };
+    }
+    return { top: 0 };
+  }
+});
 
 router.beforeEach((to, _, next) => {
-  const isAuthenticated = store.getters['auth/isAuthenticated']
-  if(!isAuthenticated && to.meta.auth) {
-    next({name: 'auth'})
-  } else {
-    next()
-  }
-})
+  const isAuthenticated = store.getters['auth/isAuthenticated'];
+  const isAdmin = store.getters['auth/isAdmin'];
 
-export default router
+  if (to.meta.admin) {
+    if (isAdmin) {
+      next();
+    } else {
+      next({ name: 'auth', query: { goTo: to.name } });
+    }
+  }
+
+  if (to.meta.auth) {
+    if (!isAuthenticated) {
+      return next({ name: 'auth', query: { goTo: to.name } });
+    } else {
+      return next();
+    }
+  }
+  next();
+});
+
+export default router;

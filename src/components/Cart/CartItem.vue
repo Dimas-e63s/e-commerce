@@ -1,50 +1,170 @@
 <template>
-  <tr>
-    <td>{{ product.title }}</td>
-    <td>
-      <button class="btn primary" @click="increment(product)">+</button>
-        {{ product.quantaty }} шт.
-      <button class="btn danger" @click="decrement(product)">-</button>
+  <tr class="item">
+    <td class="item__image-container text-left">
+      <img class="item__image" :src="product.img[0]" :alt="product.title" />
+      <h3 class="item__title">{{ product.title }}</h3>
     </td>
-    <td>{{ product.price }} руб.</td>
+    <td data-title="Size" class="item__size">
+      <p>color: black</p>
+      <p>size: XL</p>
+    </td>
+    <td data-title="Quantaty">
+      <button class="item__actions" @click="decreaseAmount">-</button>
+      <small class="item__quantity">{{ product.quantity }}</small>
+      <button class="item__actions" @click="addToCart">+</button>
+    </td>
+    <td data-title="Price" class="item__price">
+      {{ currency(product.price) }}
+    </td>
+    <td data-title="Total" class="item__price item__price--relative">
+      {{ totalProductPrice }}
+      <font-awesome-icon
+        class="item__icon"
+        :icon="['far', 'times-circle']"
+        size="lg"
+        @click="deleteFromCart"
+      />
+    </td>
   </tr>
 </template>
 
 <script>
-import { useStore } from 'vuex'
+import { computed } from 'vue';
+import { currency } from '@/utils/currency.js';
+import { useProductActions } from '@/use/productActions.js';
 export default {
   emits: ['change'],
   props: {
     product: {
       type: Object,
       required: true
+    },
+    id: {
+      type: String,
+      required: true
     }
   },
-  setup() {
-    const store = useStore()
-    const increment = el => {
-      if(el.count > el.quantaty) {
-        store.dispatch('products/updateProductInCart', {
-          id: el.id,
-          quantaty: ++el.quantaty
-        })
+  setup(props) {
+    const { addToCart, decreaseAmount, deleteFromCart } = useProductActions(
+      props.id
+    );
+
+    const totalProductPrice = computed(() =>
+      currency(props.product.price * props.product.quantity)
+    );
+    return {
+      addToCart,
+      decreaseAmount,
+      currency,
+      totalProductPrice,
+      deleteFromCart
+    };
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+@import '@/_variables';
+.item {
+  text-align: center;
+  border-width: 1px;
+  padding: 0.5rem;
+
+  @media (max-width: $breakpoint-tablet) {
+    margin-bottom: 2rem;
+    border-radius: 0.375rem;
+    box-shadow: 1px 2px 9px 2px #00000029;
+    & td {
+      display: table;
+      width: 100%;
+      border-collapse: separate;
+      border-top-width: 1px;
+      // remove some borders
+
+      &:first-child,
+      &:nth-child(2) {
+        border: 0 none;
+      }
+
+      &:first-child {
+        border: 0 none;
+      }
+      &:last-child {
+        font-weight: bold;
       }
     }
-    const decrement = el => {
-      if(el.quantaty > 1) {
-        store.dispatch('products/updateProductInCart', {
-          id: el.id,
-          quantaty: --el.quantaty
-        })  
-      } else {
-         store.dispatch('products/delete', el.id)  
-      }
+    & td[data-title]:before {
+      content: attr(data-title) ': ';
     }
 
-    return {
-      increment,
-      decrement
+    & td:before {
+      white-space: nowrap;
+      width: 50%;
+      display: table-cell;
+      text-align: left;
+      // -- just styling
+      font-weight: bold;
     }
   }
+
+  &__image-container {
+    display: flex;
+    align-items: center;
+    border-right-width: 1px;
+  }
+
+  &__image {
+    width: 9rem;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+
+    @media (min-width: $breakpoint-tablet) {
+      border-radius: 0;
+      padding: 2rem 0;
+      padding-left: 1.5rem;
+      margin-bottom: 0rem;
+    }
+  }
+
+  &__title {
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    @media (min-width: $breakpoint-tablet) {
+      margin-bottom: 0;
+      margin-left: 1rem;
+    }
+  }
+
+  &__size {
+    border-right-width: 1px;
+  }
+
+  &__actions {
+    padding: 0 0.5rem;
+  }
+
+  &__quantity {
+    display: inline-block;
+    width: 3rem;
+    border-width: 1px;
+    color: black;
+  }
+
+  &__price {
+    border-width: 1px;
+    @media (max-width: $breakpoint-tablet) {
+      border-width: 0;
+    }
+
+    &--relative {
+      position: relative;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
+  }
 }
-</script>
+</style>
